@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CBE · LINK — แผนแม่บทกลาง | Plan Hub 2569</title>
+<style>
+@font-face{font-family:'Anakotmai';font-weight:300;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-light.woff2') format('woff2');}
+@font-face{font-family:'Anakotmai';font-weight:500;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-medium.woff2') format('woff2');}
+@font-face{font-family:'Anakotmai';font-weight:700;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-bold.woff2') format('woff2');}
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --sans:'Anakotmai',sans-serif; --mono:'IBM Plex Mono',monospace;
+  --bg:#f0f2f5; --card:#fff; --border:#e4e7ed; --border2:#d1d5db;
+  --text:#1a1d2e; --text2:#5a6074; --text3:#9ca3af;
+  --navy:#1e3a5c; --gold:#b8862f;
+  --radius:10px; --shadow:0 1px 3px rgba(0,0,0,.07),0 0 0 1px rgba(0,0,0,.04);
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;}
+/* NAV */
+.nav{background:var(--navy);padding:0 20px;height:48px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
+.nav-back{color:rgba(255,255,255,.7);font-size:13px;text-decoration:none;display:flex;align-items:center;gap:5px;}
+.nav-back:hover{color:#fff;}
+.nav-div{width:1px;height:18px;background:rgba(255,255,255,.2);}
+.nav-title{font-size:13px;font-weight:700;color:#fff;}
+.nav-right{margin-left:auto;font-size:11px;color:rgba(255,255,255,.4);font-family:var(--mono);}
+/* HERO */
+.hero{background:var(--navy);padding:28px 20px 24px;text-align:center;}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.4);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.hero-title{font-size:22px;font-weight:700;color:#fff;margin-bottom:4px;}
+.hero-title span{color:var(--gold);}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto;}
+/* PAGE */
+.page{max-width:960px;margin:0 auto;padding:28px 20px 48px;}
+.sec-label{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;font-family:var(--mono);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+/* PLAN CARD */
+.plan-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .18s;}
+.plan-card:hover{box-shadow:0 4px 14px rgba(0,0,0,.1);}
+.pc-head{padding:14px 16px;display:flex;align-items:flex-start;gap:12px;}
+.pc-av{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;font-family:var(--mono);flex-shrink:0;margin-top:1px;}
+.pc-dim{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.pc-plan{font-size:12px;color:var(--text2);line-height:1.4;}
+.pc-body{padding:12px 16px 14px;}
+.pc-desc{font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.5;}
+.pc-used-label{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-family:var(--mono);}
+.pc-used{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px;}
+.used-chip{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:var(--text2);border:1px solid var(--border2);font-family:var(--mono);}
+/* URL INPUT */
+.url-wrap{display:flex;align-items:center;gap:6px;background:#fafafa;border:1px solid var(--border);border-radius:6px;padding:6px 10px;}
+.url-wrap svg{flex-shrink:0;color:var(--text3);}
+.url-input{flex:1;min-width:0;border:none;background:transparent;font-size:11px;font-family:var(--sans);color:var(--text);outline:none;}
+.url-input::placeholder{color:var(--text3);}
+.url-open{font-size:11px;font-weight:700;color:#2563eb;text-decoration:none;white-space:nowrap;flex-shrink:0;}
+.url-open:hover{text-decoration:underline;}
+/* INFO */
+.info-bar{margin-top:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;display:flex;gap:20px;flex-wrap:wrap;box-shadow:var(--shadow);}
+.info-item{font-size:12px;color:var(--text2);}
+.info-item strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← กลับหน้าหลัก</a>
+  <div class="nav-div"></div>
+  <div class="nav-title">แผนแม่บทกลาง (Plan Hub)</div>
+  <div class="nav-right">CBE · LINK ปี 2569</div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Enablers Linkage Exchange — ปี 2569</div>
+  <div class="hero-title">แผนแม่บทกลาง <span>Plan Hub</span></div>
+  <div class="hero-sub">รวมลิงก์แผนแม่บทสำคัญของทุกด้าน — วางลิงก์ Google Drive เพื่อให้ทุกด้านเข้าถึงได้สะดวก</div>
+</div>
+
+<div class="page">
+  <div class="sec-label">แผนแม่บท 10 ด้าน (วางลิงก์ Google Drive ของแต่ละด้าน)</div>
+  <div class="grid">
+    
+    <div class="plan-card" id="plan-sp">
+      <div class="pc-head" style="background:#eef2ff;border-bottom:1px solid #3730a322;">
+        <div class="pc-av" style="background:#3730a318;color:#3730a3;">SP</div>
+        <div class="pc-meta">
+          <div class="pc-dim">SP — การวางแผนยุทธศาสตร์</div>
+          <div class="pc-plan">แผนยุทธศาสตร์ กทท. 2566–2570</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">แผนหลักที่ทุกด้านต้องอ้างอิงเพื่อกำหนดทิศทางงาน</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">CG</span><span class="used-chip">RM&IC</span><span class="used-chip">HCM</span><span class="used-chip">DT</span><span class="used-chip">KM</span><span class="used-chip">IM</span><span class="used-chip">IA</span><span class="used-chip">SM</span><span class="used-chip">CM</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-sp" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-sp',this.value)">
+          <a class="url-open" id="open-plan-sp" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="plan-card" id="plan-rmic">
+      <div class="pc-head" style="background:#fff7ed;border-bottom:1px solid #9a341222;">
+        <div class="pc-av" style="background:#9a341218;color:#9a3412;">RM&IC</div>
+        <div class="pc-meta">
+          <div class="pc-dim">RM&IC — บริหารความเสี่ยงและควบคุมภายใน</div>
+          <div class="pc-plan">แผนแม่บทบริหารความเสี่ยง + Risk Universe ปี 69</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">กรอบความเสี่ยงและควบคุมภายในที่ทุกด้านต้องนำไปบูรณาการ</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">SP</span><span class="used-chip">CG</span><span class="used-chip">IA</span><span class="used-chip">KM</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-rmic" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-rmic',this.value)">
+          <a class="url-open" id="open-plan-rmic" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="plan-card" id="plan-hcm">
+      <div class="pc-head" style="background:#f0fdf4;border-bottom:1px solid #065f4622;">
+        <div class="pc-av" style="background:#065f4618;color:#065f46;">HCM</div>
+        <div class="pc-meta">
+          <div class="pc-dim">HCM — การบริหารทุนมนุษย์</div>
+          <div class="pc-plan">แผนแม่บททรัพยากรบุคคล + Competency Framework</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">แผนพัฒนาบุคลากรและกรอบสมรรถนะที่ IM และ KM ต้องอ้างอิง</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">SP</span><span class="used-chip">KM</span><span class="used-chip">IM</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-hcm" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-hcm',this.value)">
+          <a class="url-open" id="open-plan-hcm" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="plan-card" id="plan-dt">
+      <div class="pc-head" style="background:#eef2ff;border-bottom:1px solid #4338ca22;">
+        <div class="pc-av" style="background:#4338ca18;color:#4338ca;">DT</div>
+        <div class="pc-meta">
+          <div class="pc-dim">DT — การเปลี่ยนผ่านดิจิทัล</div>
+          <div class="pc-plan">Digital Transformation Roadmap + แผนแม่บท IT</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">แผนดิจิทัลและ IT ที่ KM และ RMIC ต้องนำไปพิจารณา</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">SP</span><span class="used-chip">KM</span><span class="used-chip">RM&IC</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-dt" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-dt',this.value)">
+          <a class="url-open" id="open-plan-dt" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="plan-card" id="plan-km">
+      <div class="pc-head" style="background:#fff7ed;border-bottom:1px solid #7c2d1222;">
+        <div class="pc-av" style="background:#7c2d1218;color:#7c2d12;">KM</div>
+        <div class="pc-meta">
+          <div class="pc-dim">KM — การจัดการความรู้</div>
+          <div class="pc-plan">แผนแม่บทการจัดการความรู้ + Knowledge Map</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">กรอบ KM และ Knowledge Category สำหรับองค์กร</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">IM</span><span class="used-chip">HCM</span><span class="used-chip">DT</span><span class="used-chip">RM&IC</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-km" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-km',this.value)">
+          <a class="url-open" id="open-plan-km" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="plan-card" id="plan-ia">
+      <div class="pc-head" style="background:#f8fafc;border-bottom:1px solid #33415522;">
+        <div class="pc-av" style="background:#33415518;color:#334155;">IA</div>
+        <div class="pc-meta">
+          <div class="pc-dim">IA — การตรวจสอบภายใน</div>
+          <div class="pc-plan">แผนการตรวจสอบประจำปี (Annual Audit Plan)</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">แผนตรวจสอบที่ CG และ RMIC ต้องรับทราบ</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">CG</span><span class="used-chip">RM&IC</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-ia" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-ia',this.value)">
+          <a class="url-open" id="open-plan-ia" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="plan-card" id="plan-cg">
+      <div class="pc-head" style="background:#eff6ff;border-bottom:1px solid #1e3a8a22;">
+        <div class="pc-av" style="background:#1e3a8a18;color:#1e3a8a;">CG</div>
+        <div class="pc-meta">
+          <div class="pc-dim">CG — การกำกับดูแลที่ดี</div>
+          <div class="pc-plan">นโยบายกรรมการ + SOE Policy + กฎบัตรคณะกรรมการ</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">นโยบายระดับกรรมการที่ SP ต้องนำไปเป็น Input</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">SP</span><span class="used-chip">IA</span><span class="used-chip">RM&IC</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-cg" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-cg',this.value)">
+          <a class="url-open" id="open-plan-cg" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="plan-card" id="plan-sm">
+      <div class="pc-head" style="background:#f0fdf4;border-bottom:1px solid #16653422;">
+        <div class="pc-av" style="background:#16653418;color:#166534;">SM</div>
+        <div class="pc-meta">
+          <div class="pc-dim">SM — การมุ่งเน้นผู้มีส่วนได้เสีย</div>
+          <div class="pc-plan">แผนการมีส่วนร่วมผู้มีส่วนได้เสีย + VoS Report</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">ผลสำรวจและแผนสร้างความสัมพันธ์ที่ SP และ IM ต้องอ้างอิง</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">SP</span><span class="used-chip">KM</span><span class="used-chip">IM</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-sm" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-sm',this.value)">
+          <a class="url-open" id="open-plan-sm" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="plan-card" id="plan-cm">
+      <div class="pc-head" style="background:#ecfeff;border-bottom:1px solid #164e6322;">
+        <div class="pc-av" style="background:#164e6318;color:#164e63;">CM</div>
+        <div class="pc-meta">
+          <div class="pc-dim">CM — การมุ่งเน้นลูกค้า</div>
+          <div class="pc-plan">แผนพัฒนาบริการลูกค้า + VoC Analysis Report</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">ข้อมูล Voice of Customer และแนวโน้มบริการที่ IM นำไปพัฒนานวัตกรรม</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">SP</span><span class="used-chip">IM</span><span class="used-chip">KM</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-cm" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-cm',this.value)">
+          <a class="url-open" id="open-plan-cm" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="plan-card" id="plan-im">
+      <div class="pc-head" style="background:#fef2f2;border-bottom:1px solid #991b1b22;">
+        <div class="pc-av" style="background:#991b1b18;color:#991b1b;">IM</div>
+        <div class="pc-meta">
+          <div class="pc-dim">IM — การจัดการนวัตกรรม</div>
+          <div class="pc-plan">แผนแม่บทนวัตกรรม + Innovation Roadmap ปี 69</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-desc">ทิศทางนวัตกรรมองค์กรที่ KM และ CM ต้องสอดรับ</div>
+        <div class="pc-used-label">ด้านที่ใช้อ้างอิง:</div>
+        <div class="pc-used"><span class="used-chip">SP</span><span class="used-chip">KM</span><span class="used-chip">CM</span></div>
+        <div class="url-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <input type="url" class="url-input" id="url-plan-im" placeholder="วางลิงก์ Google Drive / SharePoint..." oninput="saveUrl('plan-im',this.value)">
+          <a class="url-open" id="open-plan-im" href="#" target="_blank" style="display:none">เปิด ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-bar">
+    <div class="info-item">ลิงก์บันทึกในเบราว์เซอร์ของคุณ (localStorage) — ไม่ได้อัปโหลดไปไหน</div>
+    <div class="info-item"><strong>วิธีใช้:</strong> วางลิงก์ Google Drive → กด "เปิด ↗" → แชร์ URL หน้านี้ให้ทีม</div>
+  </div>
+</div>
+
+<script>
+function saveUrl(id, val){
+  localStorage.setItem('ld_plan_url_'+id, val);
+  const a = document.getElementById('open-'+id);
+  if(val && val.startsWith('http')){ a.href=val; a.style.display=''; }
+  else a.style.display='none';
+}
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.url-input').forEach(inp => {
+    const id = inp.id.replace('url-','');
+    const saved = localStorage.getItem('ld_plan_url_'+id);
+    if(saved){ inp.value=saved; saveUrl(id,saved); }
+  });
+});
+</script>
+</body>
+</html>
