@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CBE·LINK — RM&IC บริหารความเสี่ยงและควบคุมภายใน | Linkage Exchange 2569</title>
+<style>
+@font-face{font-family:'Anakotmai';font-weight:300;
+  src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-light.woff2') format('woff2');}
+@font-face{font-family:'Anakotmai';font-weight:500;
+  src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-medium.woff2') format('woff2');}
+@font-face{font-family:'Anakotmai';font-weight:700;
+  src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-bold.woff2') format('woff2');}
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --sans:'Anakotmai',sans-serif; --mono:'IBM Plex Mono',monospace;
+  --bg:#f0f2f5; --card:#fff; --border:#e4e7ed; --border2:#d1d5db;
+  --text:#1a1d2e; --text2:#5a6074; --text3:#9ca3af;
+  --out:#059669; --out-bg:rgba(5,150,105,.06); --out-bd:rgba(5,150,105,.20);
+  --in:#2563eb;  --in-bg:rgba(37,99,235,.05);  --in-bd:rgba(37,99,235,.18);
+  --navy:#1e3a5c; --gold:#b8862f;
+  --s-green:#059669; --s-green-bg:#ecfdf5; --s-green-bd:#6ee7b7;
+  --s-yellow:#d97706; --s-yellow-bg:#fffbeb; --s-yellow-bd:#fcd34d;
+  --s-red:#dc2626; --s-red-bg:#fef2f2; --s-red-bd:#fecaca;
+  --s-teal:#0d9488; --s-teal-bg:#f0fdfa; --s-teal-bd:#99f6e4;
+  --radius:10px; --radius-sm:6px;
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 0 0 1px rgba(0,0,0,.04);
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;}
+/* NAV */
+.nav{background:var(--navy);padding:0 20px;height:48px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
+.nav-back{color:rgba(255,255,255,.7);font-size:13px;text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .15s;}
+.nav-back:hover{color:#fff;}
+.nav-div{width:1px;height:18px;background:rgba(255,255,255,.2);}
+.nav-dim{font-size:13px;font-weight:700;color:#fff;}
+.nav-dim-th{font-size:11px;color:rgba(255,255,255,.5);margin-left:6px;}
+.nav-right{margin-left:auto;font-size:11px;color:rgba(255,255,255,.4);font-family:var(--mono);}
+/* PAGE */
+.page{max-width:1200px;margin:0 auto;padding:24px 20px 48px;}
+.page-eyebrow{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.page-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.page-sub{font-size:13px;color:var(--text2);margin-bottom:18px;}
+/* SUMMARY */
+.summary{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;margin-bottom:22px;box-shadow:var(--shadow);}
+.sum-label{font-size:12px;font-weight:500;color:var(--text2);}
+.sum-chip{font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;border:1px solid;display:inline-flex;align-items:center;gap:5px;}
+.sum-chip .num{font-family:var(--mono);font-size:13px;}
+.sc-done{background:var(--s-green-bg);color:var(--s-green);border-color:var(--s-green-bd);}
+.sc-wait{background:var(--s-yellow-bg);color:var(--s-yellow);border-color:var(--s-yellow-bd);}
+.sc-pend{background:var(--s-red-bg);color:var(--s-red);border-color:var(--s-red-bd);}
+.sum-note{margin-left:auto;font-size:11px;color:var(--text3);}
+/* COLS */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
+@media(max-width:760px){.cols{grid-template-columns:1fr;}}
+/* COL HEADER */
+.col-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:10px 14px;border-radius:var(--radius-sm);}
+.col-hd-out{background:var(--out-bg);border:1px solid var(--out-bd);}
+.col-hd-in {background:var(--in-bg); border:1px solid var(--in-bd);}
+.col-hd-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;}
+.col-hd-icon-out{background:rgba(5,150,105,.15);color:var(--out);}
+.col-hd-icon-in {background:rgba(37,99,235,.12);color:var(--in);}
+.col-hd-label{font-size:13px;font-weight:700;}
+.col-hd-label-out{color:var(--out);}
+.col-hd-label-in {color:var(--in);}
+.col-hd-desc{font-size:11px;color:var(--text2);margin-top:1px;}
+/* TIER DIVIDER */
+.tier-div{display:flex;align-items:center;gap:10px;margin:0 0 10px;}
+.tier-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;font-family:var(--mono);}
+.t-critical{background:#fffbeb;color:#b45309;border:1px solid #fcd34d;}
+.t-enhance {background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;}
+.tier-sm{font-size:9px;padding:2px 6px;margin-left:4px;}
+.tier-line{flex:1;height:1px;background:var(--border);}
+.tier-n{font-size:11px;color:var(--text3);font-family:var(--mono);white-space:nowrap;}
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;box-shadow:var(--shadow);transition:border-color .2s;}
+.card:hover{border-color:var(--border2);}
+/* DIR BANNER */
+.dir-banner{display:flex;align-items:center;gap:8px;padding:7px 12px;font-size:12px;}
+.dir-banner-out{background:var(--out-bg);border-bottom:1px solid var(--out-bd);}
+.dir-banner-in {background:var(--in-bg); border-bottom:1px solid var(--in-bd);}
+.dir-arrow{font-size:14px;font-weight:700;}
+.dir-text{flex:1;font-weight:500;}
+.dir-text-out{color:var(--out);}
+.dir-text-in {color:var(--in);}
+/* STATUS SPILL */
+.spill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;border:1px solid;white-space:nowrap;font-family:var(--mono);flex-shrink:0;}
+.sp-none    {background:var(--s-red-bg);   color:var(--s-red);   border-color:var(--s-red-bd);}
+.sp-sent    {background:var(--s-yellow-bg);color:var(--s-yellow);border-color:var(--s-yellow-bd);}
+.sp-confirmed{background:var(--s-green-bg);color:var(--s-green); border-color:var(--s-green-bd);}
+.sp-received{background:var(--s-teal-bg); color:var(--s-teal);  border-color:var(--s-teal-bd);}
+/* CARD BODY */
+.card-body{padding:11px 13px 8px;display:flex;gap:10px;align-items:flex-start;}
+.peer-av{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;font-family:var(--mono);margin-top:1px;}
+.card-info{flex:1;min-width:0;}
+.card-peer{font-size:13px;font-weight:600;margin-bottom:3px;display:flex;align-items:center;flex-wrap:wrap;gap:4px;}
+.card-doc{font-size:12px;color:var(--text2);line-height:1.4;margin-bottom:6px;}
+.crit-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.crit-code{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;font-family:var(--mono);}
+.crit-self{background:rgba(99,102,241,.1);color:#4338ca;border:1px solid rgba(99,102,241,.25);}
+.crit-peer{background:#f1f5f9;color:var(--text2);border:1px solid var(--border2);}
+.crit-sep{font-size:11px;color:var(--text3);}
+/* GUIDELINE */
+.guideline{padding:8px 12px;background:#fafafa;border-top:1px solid var(--border);font-size:12px;color:var(--text2);display:flex;flex-direction:column;gap:3px;}
+.guideline div strong{color:var(--text);font-weight:600;}
+/* CARD FOOT */
+.card-foot{padding:8px 12px;border-top:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.url-wrap{flex:1;display:flex;align-items:center;gap:6px;min-width:0;}
+.url-wrap svg{flex-shrink:0;color:var(--text3);}
+.url-input{flex:1;min-width:0;border:1px solid var(--border2);border-radius:5px;padding:4px 8px;font-size:11px;font-family:var(--sans);color:var(--text);background:#fff;outline:none;transition:border-color .15s;}
+.url-input:focus{border-color:var(--in);}
+.url-open{font-size:11px;font-weight:600;color:var(--in);text-decoration:none;white-space:nowrap;flex-shrink:0;}
+.url-open:hover{text-decoration:underline;}
+.btn-row{display:flex;gap:6px;flex-shrink:0;}
+.btn{font-family:var(--sans);font-size:11px;font-weight:700;padding:5px 12px;border-radius:6px;border:none;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.btn-out {background:var(--out);color:#fff;}
+.btn-out:hover{background:#047857;}
+.btn-in  {background:var(--in);color:#fff;}
+.btn-in:hover{background:#1d4ed8;}
+.btn-ghost{background:transparent;color:var(--text3);border:1px solid var(--border2);}
+.btn-ghost:hover{background:#f3f4f6;}
+.btn-done{background:var(--s-green-bg);color:var(--s-green);border:1px solid var(--s-green-bd) !important;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← กลับหน้าหลัก</a>
+  <div class="nav-div"></div>
+  <div class="nav-dim" style="color:#f59e0b;">RM&IC</div>
+  <span class="nav-dim-th">บริหารความเสี่ยงและควบคุมภายใน</span>
+  <div class="nav-right">CBE · LINK ปี 2569</div>
+</nav>
+
+<div class="page">
+  <div class="page-eyebrow">CBE · LINK — ระบบแลกเปลี่ยนเอกสาร Enablers ปี 2569</div>
+  <div class="page-title">RM&IC — บริหารความเสี่ยงและควบคุมภายใน</div>
+  <div class="page-sub">สิ่งที่ต้องทำในหน้านี้ — ส่งเอกสารให้ด้านอื่น และยืนยันรับเอกสารที่เขาส่งมา (6 รายการ)</div>
+
+  <div class="summary">
+    <div class="sum-label">สถานะภาพรวม</div>
+    <div class="sum-chip sc-done"><span class="num" id="s-done">0</span> ส่ง/รับแล้ว</div>
+    <div class="sum-chip sc-wait"><span class="num" id="s-wait">0</span> รอยืนยัน</div>
+    <div class="sum-chip sc-pend"><span class="num" id="s-pend">6</span> ยังค้าง</div>
+    <div class="sum-note">อัปเดตอัตโนมัติเมื่อกดปุ่ม</div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <div class="col-hd col-hd-out">
+        <div class="col-hd-icon col-hd-icon-out">↗</div>
+        <div>
+          <div class="col-hd-label col-hd-label-out">RM&IC ส่งให้เขา (4 รายการ)</div>
+          <div class="col-hd-desc">วางลิงก์ Google Drive → กดส่งแล้ว → รอฝั่งรับยืนยัน</div>
+        </div>
+      </div>
+      
+      <div class="tier-div">
+        <div class="tier-badge t-critical">★ จำเป็น</div>
+        <div class="tier-line"></div>
+        <div class="tier-n">2 รายการ</div>
+      </div>
+      <div class="card" id="rm-sp-o">
+        <div class="dir-banner dir-banner-out">
+          <span class="dir-arrow">↗</span>
+          <span class="dir-text dir-text-out">RM&IC ส่ง → SP การวางแผนยุทธศาสตร์</span>
+          <span class="spill sp-none" id="sp-rm-sp-o">ยังไม่ส่ง</span>
+        </div>
+        <div class="card-body">
+          <div class="peer-av" style="background:#eef2ff;color:#3730a3;">SP</div>
+          <div class="card-info">
+            <div class="card-peer">SP — การวางแผนยุทธศาสตร์<span class="tier-badge t-critical tier-sm">★ จำเป็น</span></div>
+            <div class="card-doc">Risk Universe ปี 69 + ผลประเมิน IC + ความเสี่ยงองค์กร</div>
+            <div class="crit-row">
+              <span class="crit-code crit-self">RM&IC 2.1</span>
+              <span class="crit-sep">→</span>
+              <span class="crit-code crit-peer">SP 2.1</span>
+            </div>
+          </div>
+        </div>
+        <div class="guideline">
+          <div><strong>RM&IC ทำ:</strong> RM&IC ประเมินและจัดทำ Risk Universe ระดับองค์กร</div>
+          <div><strong>SP นำไป:</strong> SP นำข้อมูลความเสี่ยงไปวิเคราะห์ SWOT และวางมาตรการ</div>
+        </div>
+        <div class="card-foot">
+          <div class="url-wrap">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <input type="url" class="url-input" id="url-rm-sp-o" placeholder="วางลิงก์ Google Drive..." oninput="saveUrl('rm-sp-o',this.value)">
+            <a class="url-open" id="open-rm-sp-o" href="#" target="_blank" style="display:none">เปิด ↗</a>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-out" id="btn-rm-sp-o" onclick="cycleOut('rm-sp-o')">ส่งแล้ว ↗</button>
+            <button class="btn btn-ghost" onclick="resetCard('rm-sp-o','out')">รีเซ็ต</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="rm-ia-o">
+        <div class="dir-banner dir-banner-out">
+          <span class="dir-arrow">↗</span>
+          <span class="dir-text dir-text-out">RM&IC ส่ง → IA การตรวจสอบภายใน</span>
+          <span class="spill sp-none" id="sp-rm-ia-o">ยังไม่ส่ง</span>
+        </div>
+        <div class="card-body">
+          <div class="peer-av" style="background:#f8fafc;color:#334155;">IA</div>
+          <div class="card-info">
+            <div class="card-peer">IA — การตรวจสอบภายใน<span class="tier-badge t-critical tier-sm">★ จำเป็น</span></div>
+            <div class="card-doc">Risk Register + แผนบริหารความเสี่ยง + ผลติดตาม</div>
+            <div class="crit-row">
+              <span class="crit-code crit-self">RM&IC 3.1</span>
+              <span class="crit-sep">→</span>
+              <span class="crit-code crit-peer">IA 1.1</span>
+            </div>
+          </div>
+        </div>
+        <div class="guideline">
+          <div><strong>RM&IC ทำ:</strong> RM&IC จัดทำและอัปเดต Risk Register พร้อมผลติดตาม</div>
+          <div><strong>IA นำไป:</strong> IA นำ Risk Register ไปวาง Risk-based Audit Plan</div>
+        </div>
+        <div class="card-foot">
+          <div class="url-wrap">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <input type="url" class="url-input" id="url-rm-ia-o" placeholder="วางลิงก์ Google Drive..." oninput="saveUrl('rm-ia-o',this.value)">
+            <a class="url-open" id="open-rm-ia-o" href="#" target="_blank" style="display:none">เปิด ↗</a>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-out" id="btn-rm-ia-o" onclick="cycleOut('rm-ia-o')">ส่งแล้ว ↗</button>
+            <button class="btn btn-ghost" onclick="resetCard('rm-ia-o','out')">รีเซ็ต</button>
+          </div>
+        </div>
+      </div>
+      <div class="tier-div">
+        <div class="tier-badge t-enhance">◆ ยกระดับ</div>
+        <div class="tier-line"></div>
+        <div class="tier-n">2 รายการ</div>
+      </div>
+      <div class="card" id="rm-km-o">
+        <div class="dir-banner dir-banner-out">
+          <span class="dir-arrow">↗</span>
+          <span class="dir-text dir-text-out">RM&IC ส่ง → KM การจัดการความรู้</span>
+          <span class="spill sp-none" id="sp-rm-km-o">ยังไม่ส่ง</span>
+        </div>
+        <div class="card-body">
+          <div class="peer-av" style="background:#fff7ed;color:#7c2d12;">KM</div>
+          <div class="card-info">
+            <div class="card-peer">KM — การจัดการความรู้<span class="tier-badge t-enhance tier-sm">◆ ยกระดับ</span></div>
+            <div class="card-doc">บทเรียนความเสี่ยงที่เกิดขึ้นจริง + แนวปฏิบัติ IC</div>
+            <div class="crit-row">
+              <span class="crit-code crit-self">RM&IC 4.1</span>
+              <span class="crit-sep">→</span>
+              <span class="crit-code crit-peer">KM 4.2</span>
+            </div>
+          </div>
+        </div>
+        <div class="guideline">
+          <div><strong>RM&IC ทำ:</strong> RM&IC ถอดบทเรียนจากเหตุการณ์ความเสี่ยง</div>
+          <div><strong>KM นำไป:</strong> KM จัดเก็บและเผยแพร่บทเรียนให้ทั่วองค์กร</div>
+        </div>
+        <div class="card-foot">
+          <div class="url-wrap">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <input type="url" class="url-input" id="url-rm-km-o" placeholder="วางลิงก์ Google Drive..." oninput="saveUrl('rm-km-o',this.value)">
+            <a class="url-open" id="open-rm-km-o" href="#" target="_blank" style="display:none">เปิด ↗</a>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-out" id="btn-rm-km-o" onclick="cycleOut('rm-km-o')">ส่งแล้ว ↗</button>
+            <button class="btn btn-ghost" onclick="resetCard('rm-km-o','out')">รีเซ็ต</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="rm-cg-o">
+        <div class="dir-banner dir-banner-out">
+          <span class="dir-arrow">↗</span>
+          <span class="dir-text dir-text-out">RM&IC ส่ง → CG การกำกับดูแลที่ดี</span>
+          <span class="spill sp-none" id="sp-rm-cg-o">ยังไม่ส่ง</span>
+        </div>
+        <div class="card-body">
+          <div class="peer-av" style="background:#eff6ff;color:#1e3a8a;">CG</div>
+          <div class="card-info">
+            <div class="card-peer">CG — การกำกับดูแลที่ดี<span class="tier-badge t-enhance tier-sm">◆ ยกระดับ</span></div>
+            <div class="card-doc">รายงานความเสี่ยงระดับองค์กร + ผลประเมิน IC</div>
+            <div class="crit-row">
+              <span class="crit-code crit-self">RM&IC 2.2</span>
+              <span class="crit-sep">→</span>
+              <span class="crit-code crit-peer">CG 2.2</span>
+            </div>
+          </div>
+        </div>
+        <div class="guideline">
+          <div><strong>RM&IC ทำ:</strong> RM&IC รายงานผลบริหารความเสี่ยงต่อคณะกรรมการ</div>
+          <div><strong>CG นำไป:</strong> CG กำกับดูแลระบบบริหารความเสี่ยงให้มีประสิทธิผล</div>
+        </div>
+        <div class="card-foot">
+          <div class="url-wrap">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <input type="url" class="url-input" id="url-rm-cg-o" placeholder="วางลิงก์ Google Drive..." oninput="saveUrl('rm-cg-o',this.value)">
+            <a class="url-open" id="open-rm-cg-o" href="#" target="_blank" style="display:none">เปิด ↗</a>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-out" id="btn-rm-cg-o" onclick="cycleOut('rm-cg-o')">ส่งแล้ว ↗</button>
+            <button class="btn btn-ghost" onclick="resetCard('rm-cg-o','out')">รีเซ็ต</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="col-hd col-hd-in">
+        <div class="col-hd-icon col-hd-icon-in">↙</div>
+        <div>
+          <div class="col-hd-label col-hd-label-in">รอรับจากเขา (2 รายการ)</div>
+          <div class="col-hd-desc">รอให้ด้านอื่นส่งลิงก์มา → กดรับแล้ว → เปิดเอกสาร</div>
+        </div>
+      </div>
+      
+      <div class="tier-div">
+        <div class="tier-badge t-critical">★ จำเป็น</div>
+        <div class="tier-line"></div>
+        <div class="tier-n">2 รายการ</div>
+      </div>
+      <div class="card" id="sp-rm-i">
+        <div class="dir-banner dir-banner-in">
+          <span class="dir-arrow">↙</span>
+          <span class="dir-text dir-text-in">SP ส่ง → RM&IC รอรับ</span>
+          <span class="spill sp-none" id="sp-sp-rm-i">ยังไม่รับ</span>
+        </div>
+        <div class="card-body">
+          <div class="peer-av" style="background:#eef2ff;color:#3730a3;">SP</div>
+          <div class="card-info">
+            <div class="card-peer">SP — การวางแผนยุทธศาสตร์<span class="tier-badge t-critical tier-sm">★ จำเป็น</span></div>
+            <div class="card-doc">แผนยุทธศาสตร์ + KPI เป้าหมาย + ปัจจัยเสี่ยงเชิงยุทธศาสตร์</div>
+            <div class="crit-row">
+              <span class="crit-code crit-peer">SP 6.3</span>
+              <span class="crit-sep">→</span>
+              <span class="crit-code crit-self">RM&IC 1.1</span>
+            </div>
+          </div>
+        </div>
+        <div class="guideline">
+          <div><strong>SP ทำ:</strong> SP ถ่ายทอดยุทธศาสตร์และเป้าหมายสำคัญ</div>
+          <div><strong>RM&IC นำไป:</strong> RM&IC กำหนด Risk Appetite ให้สอดรับวัตถุประสงค์จาก SP</div>
+        </div>
+        <div class="card-foot">
+          <div class="url-wrap">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <input type="url" class="url-input" id="url-sp-rm-i" placeholder="วางลิงก์ Google Drive..." oninput="saveUrl('sp-rm-i',this.value)">
+            <a class="url-open" id="open-sp-rm-i" href="#" target="_blank" style="display:none">เปิด ↗</a>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-in" id="btn-sp-rm-i" onclick="markReceived('sp-rm-i')">รับแล้ว ✓</button>
+            <button class="btn btn-ghost" onclick="resetCard('sp-rm-i','in')">รีเซ็ต</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="ia-rm-i">
+        <div class="dir-banner dir-banner-in">
+          <span class="dir-arrow">↙</span>
+          <span class="dir-text dir-text-in">IA ส่ง → RM&IC รอรับ</span>
+          <span class="spill sp-none" id="sp-ia-rm-i">ยังไม่รับ</span>
+        </div>
+        <div class="card-body">
+          <div class="peer-av" style="background:#f8fafc;color:#334155;">IA</div>
+          <div class="card-info">
+            <div class="card-peer">IA — การตรวจสอบภายใน<span class="tier-badge t-critical tier-sm">★ จำเป็น</span></div>
+            <div class="card-doc">ผลการตรวจสอบ IC + ข้อสังเกตและข้อเสนอแนะ</div>
+            <div class="crit-row">
+              <span class="crit-code crit-peer">IA 2.2</span>
+              <span class="crit-sep">→</span>
+              <span class="crit-code crit-self">RM&IC 4.1</span>
+            </div>
+          </div>
+        </div>
+        <div class="guideline">
+          <div><strong>IA ทำ:</strong> IA ตรวจสอบและระบุจุดอ่อนของระบบควบคุมภายใน</div>
+          <div><strong>RM&IC นำไป:</strong> RM&IC นำผลตรวจสอบมาปรับปรุงกระบวนการและมาตรการ IC</div>
+        </div>
+        <div class="card-foot">
+          <div class="url-wrap">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <input type="url" class="url-input" id="url-ia-rm-i" placeholder="วางลิงก์ Google Drive..." oninput="saveUrl('ia-rm-i',this.value)">
+            <a class="url-open" id="open-ia-rm-i" href="#" target="_blank" style="display:none">เปิด ↗</a>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-in" id="btn-ia-rm-i" onclick="markReceived('ia-rm-i')">รับแล้ว ✓</button>
+            <button class="btn btn-ghost" onclick="resetCard('ia-rm-i','in')">รีเซ็ต</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const LS_PRE = 'ld_rmic_';
+
+function lsKey(type, id){ return LS_PRE + type + '_' + id; }
+
+function saveUrl(id, val){
+  localStorage.setItem(lsKey('url', id), val);
+  const a = document.getElementById('open-'+id);
+  if(val && val.startsWith('http')){ a.href=val; a.style.display=''; }
+  else a.style.display='none';
+}
+
+function setStatus(id, status, label, cls){
+  localStorage.setItem(lsKey('st', id), status);
+  const sp = document.getElementById('sp-'+id);
+  if(!sp) return;
+  sp.className = 'spill ' + cls;
+  sp.textContent = label;
+  updateSummary();
+}
+
+function cycleOut(id){
+  const cur = localStorage.getItem(lsKey('st', id)) || 'none';
+  if(cur === 'none')      setStatus(id,'sent',     'ส่งแล้ว — รอยืนยัน','sp-sent');
+  else if(cur === 'sent') setStatus(id,'confirmed','ยืนยันแล้ว ✓',       'sp-confirmed');
+  else                    setStatus(id,'none',     'ยังไม่ส่ง',          'sp-none');
+  const btn = document.getElementById('btn-'+id);
+  if(btn){
+    const st = localStorage.getItem(lsKey('st', id));
+    btn.textContent = st==='confirmed' ? 'รีเซ็ตสถานะ' : st==='sent' ? 'ยืนยันรับแล้ว ✓' : 'ส่งแล้ว ↗';
+  }
+}
+
+function markReceived(id){
+  const cur = localStorage.getItem(lsKey('st', id)) || 'none';
+  if(cur === 'none')      setStatus(id,'received','รับแล้ว ✓','sp-received');
+  else                    setStatus(id,'none',    'ยังไม่รับ','sp-none');
+  const btn = document.getElementById('btn-'+id);
+  if(btn) btn.textContent = localStorage.getItem(lsKey('st',id))==='received' ? 'ยกเลิก' : 'รับแล้ว ✓';
+}
+
+function resetCard(id, type){
+  setStatus(id, 'none', type==='out' ? 'ยังไม่ส่ง' : 'ยังไม่รับ', 'sp-none');
+  const btn = document.getElementById('btn-'+id);
+  if(btn) btn.textContent = type==='out' ? 'ส่งแล้ว ↗' : 'รับแล้ว ✓';
+}
+
+function updateSummary(){
+  const cards = document.querySelectorAll('.card');
+  let done=0, wait=0, pend=0;
+  cards.forEach(c => {
+    const st = localStorage.getItem(lsKey('st', c.id)) || 'none';
+    if(st==='confirmed'||st==='received') done++;
+    else if(st==='sent') wait++;
+    else pend++;
+  });
+  document.getElementById('s-done').textContent = done;
+  document.getElementById('s-wait').textContent = wait;
+  document.getElementById('s-pend').textContent = pend;
+}
+
+function restoreAll(){
+  document.querySelectorAll('.card').forEach(card => {
+    const id = card.id;
+    // restore URL
+    const url = localStorage.getItem(lsKey('url', id));
+    if(url){ const inp = document.getElementById('url-'+id); if(inp) inp.value=url; saveUrl(id,url); }
+    // restore status
+    const st = localStorage.getItem(lsKey('st', id)) || 'none';
+    const sp = document.getElementById('sp-'+id);
+    const btn = document.getElementById('btn-'+id);
+    const isOut = card.querySelector('.dir-banner-out') !== null;
+    if(sp){
+      const map = {
+        'none':     isOut ? ['ยังไม่ส่ง','sp-none']      : ['ยังไม่รับ','sp-none'],
+        'sent':     ['ส่งแล้ว — รอยืนยัน','sp-sent'],
+        'confirmed':['ยืนยันแล้ว ✓','sp-confirmed'],
+        'received': ['รับแล้ว ✓','sp-received'],
+      };
+      const [lbl,cls] = map[st] || map['none'];
+      sp.textContent=lbl; sp.className='spill '+cls;
+    }
+    if(btn && isOut){
+      btn.textContent = st==='confirmed' ? 'รีเซ็ตสถานะ' : st==='sent' ? 'ยืนยันรับแล้ว ✓' : 'ส่งแล้ว ↗';
+    }
+    if(btn && !isOut){
+      btn.textContent = st==='received' ? 'ยกเลิก' : 'รับแล้ว ✓';
+    }
+  });
+  updateSummary();
+}
+
+window.addEventListener('DOMContentLoaded', restoreAll);
+</script>
+</body>
+</html>

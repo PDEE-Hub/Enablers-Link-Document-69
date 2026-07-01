@@ -2,872 +2,199 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CBE Linkage Exchange v3 — การท่าเรือแห่งประเทศไทย</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CBE · LINK — ระบบแลกเปลี่ยนเอกสาร Enablers ปี 2569</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
-:root{
-  --bg:#0f1117;--bg2:#161b27;--bg3:#1e2535;--bg4:#252d3f;
-  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
-  --text:#e8eaf2;--text2:#8b92a8;--text3:#555d72;
-  --green:#22c55e;--green-bg:rgba(34,197,94,0.12);--green-bd:rgba(34,197,94,0.35);
-  --yellow:#f59e0b;--yellow-bg:rgba(245,158,11,0.12);--yellow-bd:rgba(245,158,11,0.35);
-  --red:#ef4444;--red-bg:rgba(239,68,68,0.12);--red-bd:rgba(239,68,68,0.35);
-  --blue:#3b82f6;--blue-bg:rgba(59,130,246,0.12);--blue-bd:rgba(59,130,246,0.35);
-  --teal:#14b8a6;--teal-bg:rgba(20,184,166,0.12);--teal-bd:rgba(20,184,166,0.35);
-  --gold:#f59e0b;--gold-bg:rgba(245,158,11,0.18);--gold-bd:rgba(245,158,11,0.5);
-  --accent:#6366f1;--accent-bg:rgba(99,102,241,0.15);
-  --radius:10px;--radius-sm:6px;
-}
+@font-face{font-family:'Anakotmai';font-weight:300;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-light.woff2') format('woff2');}
+@font-face{font-family:'Anakotmai';font-weight:500;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-medium.woff2') format('woff2');}
+@font-face{font-family:'Anakotmai';font-weight:700;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-bold.woff2') format('woff2');}
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'IBM Plex Sans Thai',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;}
-
-/* ── TOPBAR ── */
-.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;gap:12px;height:52px;position:sticky;top:0;z-index:100;}
-.topbar-logo{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:var(--accent);letter-spacing:1px;white-space:nowrap;}
-.topbar-divider{width:1px;height:20px;background:var(--border2);flex-shrink:0;}
-.topbar-meta{display:flex;flex-direction:column;gap:0;}
-.topbar-title{font-size:12px;color:var(--text2);white-space:nowrap;}
-.topbar-tagline{font-size:10px;color:var(--text3);white-space:nowrap;}
-.topbar-right{margin-left:auto;display:flex;align-items:center;gap:8px;}
-.domain-selector{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-size:12px;padding:5px 8px;font-family:'IBM Plex Sans Thai',sans-serif;cursor:pointer;outline:none;}
-.broadcast-btn{display:flex;align-items:center;gap:5px;background:var(--accent-bg);border:1px solid var(--accent);border-radius:var(--radius-sm);color:#a5b4fc;font-size:12px;font-weight:500;padding:5px 14px;cursor:pointer;font-family:'IBM Plex Sans Thai',sans-serif;transition:all .2s;white-space:nowrap;}
-.broadcast-btn:hover{background:rgba(99,102,241,0.28);}
-.broadcast-btn.fired{background:var(--green-bg);border-color:var(--green);color:var(--green);}
-
-/* ── LAYOUT ── */
-.layout{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 52px);}
-.panel{padding:18px;border-right:1px solid var(--border);overflow-y:auto;}
-.panel:last-child{border-right:none;}
-.panel-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);}
-.panel-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
-.icon-out{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid var(--green-bd);}
-.icon-in{background:rgba(59,130,246,0.15);color:var(--blue);border:1px solid var(--blue-bd);}
-.panel-title{font-size:13px;font-weight:600;}
-.panel-sub{font-size:11px;color:var(--text2);margin-top:1px;}
-.domain-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:4px 10px;border-radius:20px;margin-bottom:12px;}
-.summary-bar{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
-.sum-chip{font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid;}
-
-/* ── PRIORITY BADGE on card ── */
-.prio-badge{font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;letter-spacing:.4px;white-space:nowrap;flex-shrink:0;font-family:'IBM Plex Mono',monospace;}
-.prio-critical{background:rgba(245,158,11,0.22);color:#fcd34d;border:1px solid rgba(245,158,11,0.5);}
-.prio-important{background:rgba(99,102,241,0.18);color:#a5b4fc;border:1px solid rgba(99,102,241,0.35);}
-
-/* ── CARD ── */
-.conn-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:border-color .2s;}
-/* priority highlight */
-.conn-card.prio-hi{border-color:rgba(245,158,11,0.3);box-shadow:0 0 0 1px rgba(245,158,11,0.12);}
-.conn-card.prio-hi:hover{border-color:rgba(245,158,11,0.55);}
-.conn-card.prio-md{border-color:rgba(99,102,241,0.25);}
-.conn-card.prio-md:hover{border-color:rgba(99,102,241,0.5);}
-.conn-card:not(.prio-hi):not(.prio-md):hover{border-color:var(--border2);}
-/* status left border overlays prio border */
-.conn-card.status-sent{border-left:3px solid var(--yellow);}
-.conn-card.status-confirmed{border-left:3px solid var(--green);}
-.conn-card.status-none{border-left:3px solid var(--red);}
-.conn-card.status-received{border-left:3px solid var(--teal);}
-
-.conn-top{padding:11px 13px 7px;display:flex;align-items:flex-start;gap:9px;}
-.peer-avatar{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;font-family:'IBM Plex Mono',monospace;margin-top:1px;}
-.conn-info{flex:1;min-width:0;}
-.conn-top-row{display:flex;align-items:center;gap:6px;margin-bottom:2px;flex-wrap:wrap;}
-.conn-peer-name{font-size:13px;font-weight:600;}
-.conn-doc-desc{font-size:12px;color:var(--text2);line-height:1.4;margin-bottom:5px;}
-.crit-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
-.crit-self{font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;background:var(--accent-bg);color:#a5b4fc;border:1px solid rgba(99,102,241,0.3);font-family:'IBM Plex Mono',monospace;}
-.crit-sep{font-size:10px;color:var(--text3);}
-.crit-peer{font-size:10px;font-weight:500;padding:2px 7px;border-radius:4px;background:var(--bg4);color:var(--text2);border:1px solid var(--border2);font-family:'IBM Plex Mono',monospace;}
-.status-pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;flex-shrink:0;font-family:'IBM Plex Mono',monospace;white-space:nowrap;margin-top:2px;}
-.s-none{background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);}
-.s-sent{background:var(--yellow-bg);color:var(--yellow);border:1px solid var(--yellow-bd);}
-.s-confirmed{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd);}
-.s-received{background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd);}
-
-/* ── GUIDELINE STRIP ── */
-.guideline{padding:6px 13px 8px;background:rgba(0,0,0,0.18);border-top:1px dashed rgba(255,255,255,0.06);display:flex;gap:7px;align-items:flex-start;}
-.guide-icon{font-size:11px;flex-shrink:0;margin-top:1px;opacity:.55;}
-.guide-text{font-size:11px;color:var(--text2);line-height:1.5;}
-.guide-text strong{color:var(--text);font-weight:500;}
-
-/* ── CARD BOTTOM ── */
-.conn-bottom{padding:7px 13px 11px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;border-top:1px solid var(--border);background:rgba(0,0,0,0.12);}
-.doc-area{display:flex;align-items:center;gap:5px;flex:1;min-width:0;}
-.doc-link{font-size:11px;color:#60a5fa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:155px;text-decoration:none;}
-.doc-link:hover{text-decoration:underline;}
-.no-doc{font-size:11px;color:var(--text3);}
-.btn{font-size:11px;font-weight:500;padding:4px 10px;border-radius:var(--radius-sm);border:1px solid;cursor:pointer;font-family:'IBM Plex Sans Thai',sans-serif;transition:all .15s;white-space:nowrap;flex-shrink:0;}
-.btn-attach{background:var(--bg3);border-color:var(--border2);color:var(--text2);}
-.btn-attach:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg);}
-.btn-send{background:var(--green-bg);border-color:var(--green-bd);color:var(--green);}
-.btn-send:hover{background:rgba(34,197,94,0.22);}
-.btn-send:disabled{opacity:.35;cursor:default;}
-.btn-recv{background:var(--teal-bg);border-color:var(--teal-bd);color:var(--teal);}
-.btn-recv:hover{background:rgba(20,184,166,0.22);}
-.btn-recv:disabled{opacity:.35;cursor:default;}
-
-.notify-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
-
-/* ── BROADCAST LOG ── */
-.broadcast-log{margin-top:12px;border-top:1px solid var(--border);padding-top:10px;display:none;}
-.broadcast-log.show{display:block;}
-.log-title{font-size:11px;color:var(--text3);margin-bottom:6px;font-family:'IBM Plex Mono',monospace;}
-.log-row{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text2);padding:3px 0;}
-.log-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
-.log-skip{color:var(--text3);font-style:italic;}
-
-/* ── MODAL ── */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;align-items:center;justify-content:center;}
-.modal-overlay.open{display:flex;}
-.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;padding:22px;width:400px;max-width:95vw;}
-.modal-title{font-size:14px;font-weight:600;margin-bottom:5px;}
-.modal-sub{font-size:12px;color:var(--text2);margin-bottom:16px;}
-.modal input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-size:13px;padding:8px 10px;font-family:'IBM Plex Sans Thai',sans-serif;outline:none;margin-bottom:8px;}
-.modal input:focus{border-color:var(--blue);}
-.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:4px;}
-.btn-cancel{background:var(--bg3);border-color:var(--border2);color:var(--text2);}
-.btn-ok{background:var(--blue-bg);border-color:var(--blue-bd);color:#60a5fa;}
-.ico{vertical-align:-2px;flex-shrink:0;}
+:root{
+  --sans:'Anakotmai',sans-serif;--mono:'IBM Plex Mono',monospace;
+  --bg:#f0f2f5;--card:#fff;--border:#e4e7ed;--border2:#d1d5db;
+  --text:#1a1d2e;--text2:#5a6074;--text3:#9ca3af;
+  --navy:#1e3a5c;--gold:#b8862f;
+  --s-green:#059669;--s-green-bg:#ecfdf5;--s-green-bd:#6ee7b7;
+  --s-red:#dc2626;--s-red-bg:#fef2f2;--s-red-bd:#fecaca;
+  --s-yellow:#d97706;--s-yellow-bg:#fffbeb;--s-yellow-bd:#fcd34d;
+  --radius:10px;--shadow:0 1px 3px rgba(0,0,0,.07),0 0 0 1px rgba(0,0,0,.04);
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;}
+.hero{background:var(--navy);padding:28px 24px 24px;text-align:center;}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.45);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.hero-title{font-size:24px;font-weight:700;color:#fff;margin-bottom:4px;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.55);}
+.hero-gold{color:var(--gold);}
+.page{max-width:1100px;margin:0 auto;padding:28px 20px 48px;}
+.sec-label{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;font-family:var(--mono);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:32px;}
+.dim-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;cursor:pointer;text-decoration:none;color:inherit;display:block;transition:all .18s;box-shadow:var(--shadow);}
+.dim-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.09);}
+.dc-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.dc-av{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;font-family:var(--mono);flex-shrink:0;}
+.dc-label{font-size:14px;font-weight:700;}
+.dc-th{font-size:11px;color:var(--text2);margin-bottom:10px;line-height:1.4;}
+.dc-stats{display:flex;gap:6px;flex-wrap:wrap;}
+.dc-chip{font-size:10px;font-weight:600;padding:2px 7px;border-radius:12px;border:1px solid;font-family:var(--mono);}
+.chip-pend{background:var(--s-red-bg);color:var(--s-red);border-color:var(--s-red-bd);}
+.chip-done{background:var(--s-green-bg);color:var(--s-green);border-color:var(--s-green-bd);}
+.chip-wait{background:var(--s-yellow-bg);color:var(--s-yellow);border-color:var(--s-yellow-bd);}
+.info-bar{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;box-shadow:var(--shadow);}
+.info-item{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px;}
+.info-item strong{color:var(--text);}
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="topbar-logo">CBE·LINK</div>
-  <div class="topbar-divider"></div>
-  <div class="topbar-meta">
-    <div class="topbar-title">ระบบแลกเปลี่ยนเอกสาร Enablers — กทท. ปี 2569</div>
-    <div class="topbar-tagline">แก้ปัญหา Silo ระหว่างด้าน · ส่ง-รับเอกสาร Linkage ด้วย Handshake · มุ่งยกระดับคะแนน SE-AM</div>
-  </div>
-  <div class="topbar-right">
-    <select class="domain-selector" id="domain-select" onchange="switchDomain(this.value)">
-      <option value="CG">CG — การกำกับดูแลที่ดี</option>
-      <option value="SP">SP — การวางแผนเชิงกลยุทธ์</option>
-      <option value="RMIC">RM&IC — บริหารความเสี่ยง</option>
-      <option value="SM">SM — มุ่งเน้นผู้มีส่วนได้เสีย</option>
-      <option value="CM">CM — มุ่งเน้นลูกค้า</option>
-      <option value="DT">DT — เทคโนโลยีดิจิทัล</option>
-      <option value="HCM">HCM — บริหารทุนมนุษย์</option>
-      <option value="KM">KM — จัดการความรู้</option>
-      <option value="IM">IM — จัดการนวัตกรรม</option>
-      <option value="IA">IA — ตรวจสอบภายใน</option>
-    </select>
-    <button class="broadcast-btn" id="bcast-btn" onclick="doBroadcast()">&#9432; แจ้งเฉพาะด้านที่อัปเดต</button>
-  </div>
+<div class="hero">
+  <div class="hero-eyebrow">Port Authority of Thailand — กองประเมินผลองค์กร</div>
+  <div class="hero-title">CBE · LINK <span class="hero-gold">Linkage Exchange</span></div>
+  <div class="hero-sub">ระบบแลกเปลี่ยนเอกสารเชื่อมโยง 10 ด้าน Enablers ปี 2569 — เลือกด้านของคุณเพื่อจัดการเอกสาร</div>
 </div>
 
-<div class="layout">
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-icon icon-out">↗</div>
-      <div><div class="panel-title">เราเห็นเขา — ส่งเอกสารออก</div>
-      <div class="panel-sub">แนบ Drive Link → กดส่ง → รอฝั่งรับยืนยัน</div></div>
-    </div>
-    <div id="out-badge"></div>
-    <div class="summary-bar" id="out-sum"></div>
-    <div id="out-cards"></div>
-    <div class="broadcast-log" id="bcast-log">
-      <div class="log-title">// smart broadcast log</div>
-      <div id="log-rows"></div>
-    </div>
+<div class="page">
+  <div class="sec-label">เลือกด้านที่คุณรับผิดชอบ</div>
+  <div class="grid">
+    
+    <a href="RDE_LD_CG69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#eff6ff;color:#1e3a8a;">CG</div>
+        <div class="dc-label">CG</div>
+      </div>
+      <div class="dc-th">การกำกับดูแลที่ดี</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-CG">5 รายการ</span>
+      </div>
+    </a>
+    <a href="RDE_LD_SP69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#eef2ff;color:#3730a3;">SP</div>
+        <div class="dc-label">SP</div>
+      </div>
+      <div class="dc-th">การวางแผนยุทธศาสตร์</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-SP">12 รายการ</span>
+      </div>
+    </a>
+    <a href="RDE_LD_RMIC69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#fff7ed;color:#9a3412;">RM&IC</div>
+        <div class="dc-label">RM&IC</div>
+      </div>
+      <div class="dc-th">บริหารความเสี่ยงและควบคุมภายใน</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-RMIC">6 รายการ</span>
+      </div>
+    </a>
+    <a href="RDE_LD_SM69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#f0fdf4;color:#166534;">SM</div>
+        <div class="dc-label">SM</div>
+      </div>
+      <div class="dc-th">การมุ่งเน้นผู้มีส่วนได้เสีย</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-SM">4 รายการ</span>
+      </div>
+    </a>
+    <a href="RDE_LD_CM69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#ecfeff;color:#164e63;">CM</div>
+        <div class="dc-label">CM</div>
+      </div>
+      <div class="dc-th">การมุ่งเน้นลูกค้า</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-CM">5 รายการ</span>
+      </div>
+    </a>
+    <a href="RDE_LD_DT69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#eef2ff;color:#4338ca;">DT</div>
+        <div class="dc-label">DT</div>
+      </div>
+      <div class="dc-th">การเปลี่ยนผ่านดิจิทัล</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-DT">5 รายการ</span>
+      </div>
+    </a>
+    <a href="RDE_LD_HCM69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#f0fdf4;color:#065f46;">HCM</div>
+        <div class="dc-label">HCM</div>
+      </div>
+      <div class="dc-th">การบริหารทุนมนุษย์</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-HCM">5 รายการ</span>
+      </div>
+    </a>
+    <a href="RDE_LD_KM69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#fff7ed;color:#7c2d12;">KM</div>
+        <div class="dc-label">KM</div>
+      </div>
+      <div class="dc-th">การจัดการความรู้</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-KM">9 รายการ</span>
+      </div>
+    </a>
+    <a href="RDE_LD_IM69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#fef2f2;color:#991b1b;">IM</div>
+        <div class="dc-label">IM</div>
+      </div>
+      <div class="dc-th">การจัดการนวัตกรรม</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-IM">9 รายการ</span>
+      </div>
+    </a>
+    <a href="RDE_LD_IA69.html" class="dim-card">
+      <div class="dc-top">
+        <div class="dc-av" style="background:#f8fafc;color:#334155;">IA</div>
+        <div class="dc-label">IA</div>
+      </div>
+      <div class="dc-th">การตรวจสอบภายใน</div>
+      <div class="dc-stats">
+        <span class="dc-chip chip-pend" id="hp-IA">5 รายการ</span>
+      </div>
+    </a>
   </div>
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-icon icon-in">↙</div>
-      <div><div class="panel-title">เขาเห็นเรา — รับเอกสารเข้า</div>
-      <div class="panel-sub">รอด้านอื่นส่งมาก่อน → กดรับยืนยัน → สมบูรณ์</div></div>
-    </div>
-    <div id="in-badge"></div>
-    <div class="summary-bar" id="in-sum"></div>
-    <div id="in-cards"></div>
-  </div>
-</div>
 
-<div class="modal-overlay" id="modal">
-  <div class="modal">
-    <div class="modal-title">แนบเอกสาร Google Drive</div>
-    <div class="modal-sub" id="modal-sub"></div>
-    <input type="text" id="m-name" placeholder="ชื่อเอกสาร เช่น แผนยุทธศาสตร์ 2566-2570.pdf"/>
-    <input type="url"  id="m-url"  placeholder="https://drive.google.com/file/d/..."/>
-    <div class="modal-actions">
-      <button class="btn btn-cancel" onclick="closeModal()">ยกเลิก</button>
-      <button class="btn btn-ok"     onclick="confirmAttach()">แนบเอกสาร</button>
-    </div>
+  <div class="info-bar">
+    <div class="info-item">★ <strong>จำเป็น</strong> — เอกสารพื้นฐาน L1–L3 ต้องครบก่อน</div>
+    <div class="info-item">◆ <strong>ยกระดับ</strong> — เอกสารเสริมเพื่อ L4–L5</div>
+    <div class="info-item">สถานะบันทึกในเบราว์เซอร์ของคุณ (localStorage)</div>
   </div>
 </div>
 
 <script>
-// ── DOMAIN COLORS ──────────────────────────────────────────
-const DC={
-  CG:  {bg:'rgba(59,130,246,0.18)', color:'#60a5fa',abbr:'CG'},
-  SP:  {bg:'rgba(99,102,241,0.18)', color:'#a5b4fc',abbr:'SP'},
-  RMIC:{bg:'rgba(239,68,68,0.18)',  color:'#fca5a5',abbr:'RM&IC'},
-  SM:  {bg:'rgba(236,72,153,0.18)', color:'#f9a8d4',abbr:'SM'},
-  CM:  {bg:'rgba(217,70,239,0.18)', color:'#e879f9',abbr:'CM'},
-  DT:  {bg:'rgba(139,92,246,0.18)', color:'#c4b5fd',abbr:'DT'},
-  HCM: {bg:'rgba(16,185,129,0.18)',color:'#6ee7b7',abbr:'HCM'},
-  KM:  {bg:'rgba(245,158,11,0.18)',color:'#fcd34d',abbr:'KM'},
-  IM:  {bg:'rgba(251,113,133,0.18)',color:'#fda4af',abbr:'IM'},
-  IA:  {bg:'rgba(20,184,166,0.18)',color:'#5eead4',abbr:'IA'},
-};
-
-// ── PRIORITY LEVELS ───────────────────────────────────────
-// 'critical' = ต้องมี น.น.สูง ผู้ตรวจติซ้ำ (SP,RM&IC,IA ล้วนน.น.7)
-// 'important' = มีและดี น.น.ปานกลาง
-// '' = มีก็ดี
-// ─────────────────────────────────────────────────────────
-const LD={
-  CG:{label:'การกำกับดูแลที่ดี',score:'2.83',weight:3,
-    out:[
-      {peer:'SP',  id:'cg-sp-o',prio:'important',
-       doc:'นโยบายกรรมการ + ทิศทางองค์กร + ข้อกำหนด SOE Policy',
-       cs:'CG 1.1',cp:'SP 2.1',
-       use_self:'CG กำหนดทิศทางนโยบายให้ฝ่ายจัดการ',
-       use_peer:'SP นำไปเป็น Input Environmental Scanning และ SWOT',
-       status:'none'},
-      {peer:'IA',  id:'cg-ia-o',prio:'critical',
-       doc:'กฎบัตรคณะกรรมการตรวจสอบ + ขอบเขตการตรวจสอบ',
-       cs:'CG 3.1',cp:'IA 1.1',
-       use_self:'CG อนุมัติกฎบัตรและขอบเขตงานตรวจสอบ',
-       use_peer:'IA ใช้กำหนดขอบเขตและความเป็นอิสระของหน่วยตรวจสอบ',
-       status:'none'},
-    ],
-    in:[
-      {peer:'SP',  id:'sp-cg-i',prio:'important',
-       doc:'แผนยุทธศาสตร์ + KPI + ผลการดำเนินงานสำคัญ',
-       cs:'SP 6.1',cp:'CG 2.1',
-       use_peer:'SP รายงานแผนและผลยุทธศาสตร์ให้คณะกรรมการ',
-       use_self:'CG กำกับดูแลและอนุมัติทิศทางยุทธศาสตร์',
-       status:'none'},
-      {peer:'IA',  id:'ia-cg-i',prio:'critical',
-       doc:'รายงานผลตรวจสอบประจำปี + ข้อเสนอแนะสำคัญ',
-       cs:'IA 2.3',cp:'CG 3.1',
-       use_peer:'IA รายงานผลโดยตรงต่อคณะกรรมการตรวจสอบ',
-       use_self:'CG พิจารณาและติดตามข้อเสนอแนะจากการตรวจสอบ',
-       status:'none'},
-      {peer:'RMIC',id:'rm-cg-i',prio:'important',
-       doc:'รายงานความเสี่ยงระดับองค์กร + ผลประเมิน IC',
-       cs:'RM&IC 2.2',cp:'CG 2.2',
-       use_peer:'RM&IC รายงานผลบริหารความเสี่ยงและ IC',
-       use_self:'CG กำกับดูแลระบบบริหารความเสี่ยงให้มีประสิทธิผล',
-       status:'none'},
-    ]},
-
-  SP:{label:'การวางแผนเชิงกลยุทธ์',score:'2.54',weight:7,
-    out:[
-      {peer:'CG',  id:'sp-cg',  prio:'important',
-       doc:'แผนยุทธศาสตร์ กทท. 2566–2570 + KPI องค์กร',
-       cs:'SP 6.1',cp:'CG 2.1',
-       use_self:'SP จัดทำและรายงานแผนยุทธศาสตร์ให้คณะกรรมการ',
-       use_peer:'CG กำกับดูแลและอนุมัติทิศทางยุทธศาสตร์',
-       status:'none'},
-      {peer:'RMIC',id:'sp-rm',  prio:'critical',
-       doc:'แผนยุทธศาสตร์ + KPI + ปัจจัยเสี่ยงเชิงยุทธศาสตร์',
-       cs:'SP 6.3',cp:'RM&IC 1.1',
-       use_self:'SP ถ่ายทอดยุทธศาสตร์และ KPI ไปยังแผนแม่บทต่างๆ',
-       use_peer:'RM&IC กำหนด Risk Appetite ให้สอดรับวัตถุประสงค์เชิงยุทธศาสตร์',
-       status:'none'},
-      {peer:'HCM', id:'sp-hcm', prio:'critical',
-       doc:'KPI สายงาน + Competency ที่ต้องการ + กรอบอัตรากำลัง',
-       cs:'SP 6.4',cp:'HCM 2.2',
-       use_self:'SP ถ่ายทอด KPI ระดับองค์กรสู่ระดับสายงานและบุคคล',
-       use_peer:'HCM กำหนด KPI บุคคลและแผนพัฒนา Competency',
-       status:'none'},
-      {peer:'DT',  id:'sp-dt',  prio:'important',
-       doc:'Digital Strategy Direction + ทิศทางเทคโนโลยี 5 ปี',
-       cs:'SP 5.3',cp:'DT 1.2',
-       use_self:'SP กำหนดทิศทางดิจิทัลที่สอดรับยุทธศาสตร์',
-       use_peer:'DT จัดทำ Digital Roadmap ระยะ 3–5 ปี',
-       status:'none'},
-      {peer:'KM',  id:'sp-km',  prio:'important',
-       doc:'ประเด็นยุทธศาสตร์ที่ต้องการความรู้ + เป้าหมายนวัตกรรม',
-       cs:'SP 5.2',cp:'KM 1.1',
-       use_self:'SP ระบุประเด็นที่ต้องการความรู้รองรับ',
-       use_peer:'KM กำหนดทิศทาง KM ให้สอดรับยุทธศาสตร์',
-       status:'none'},
-      {peer:'IM',  id:'sp-im',  prio:'important',
-       doc:'ทิศทางนวัตกรรมองค์กร + เป้าหมายนวัตกรรม ปี 69',
-       cs:'SP 5.4',cp:'IM 1.1',
-       use_self:'SP กำหนดเป้าหมายนวัตกรรมที่องค์กรต้องการ',
-       use_peer:'IM กำหนดวิสัยทัศน์นวัตกรรมให้สอดรับยุทธศาสตร์',
-       status:'none'},
-      {peer:'IA',  id:'sp-ia',  prio:'critical',
-       doc:'แผนยุทธศาสตร์ + ประเด็นสำคัญเชิงกลยุทธ์',
-       cs:'SP 6.1',cp:'IA 1.1',
-       use_self:'SP แจ้งประเด็นยุทธศาสตร์สำคัญที่ต้องตรวจสอบ',
-       use_peer:'IA วาง Strategic Audit Plan ให้สะท้อนยุทธศาสตร์',
-       status:'none'},
-    ],
-    in:[
-      {peer:'CG',  id:'cg-sp',  prio:'important',
-       doc:'นโยบายกรรมการ + ทิศทาง + ข้อกำหนด SOE Policy',
-       cs:'CG 1.1',cp:'SP 2.1',
-       use_peer:'CG กำหนดทิศทางนโยบายและกรอบการดำเนินงาน',
-       use_self:'SP นำนโยบายเป็น Input หลักใน Environmental Scanning',
-       status:'none'},
-      {peer:'SM',  id:'sm-sp',  prio:'important',
-       doc:'ความต้องการและความคาดหวังผู้มีส่วนได้เสีย',
-       cs:'SM 1.1',cp:'SP 2.1',
-       use_peer:'SM รวบรวมความต้องการผู้มีส่วนได้เสียทุกกลุ่ม',
-       use_self:'SP นำ VoS ไปวิเคราะห์ SWOT และกำหนดยุทธศาสตร์',
-       status:'none'},
-      {peer:'CM',  id:'cm-sp',  prio:'important',
-       doc:'Voice of Customer + ข้อมูลตลาด + ความต้องการลูกค้า',
-       cs:'CM 1.1',cp:'SP 2.1',
-       use_peer:'CM รวบรวม VoC และวิเคราะห์ข้อมูลตลาด',
-       use_self:'SP นำ VoC ไปวิเคราะห์โอกาส/ภัยคุกคาม',
-       status:'none'},
-      {peer:'RMIC',id:'rm-sp',  prio:'critical',
-       doc:'Risk Universe ปี 69 + ผลประเมิน IC',
-       cs:'RM&IC 2.1',cp:'SP 2.1',
-       use_peer:'RM&IC ประเมิน Risk Universe ระดับองค์กร',
-       use_self:'SP นำความเสี่ยงไปวิเคราะห์ SWOT และวางมาตรการ',
-       status:'none'},
-      {peer:'HCM', id:'hcm-sp', prio:'critical',
-       doc:'Competency Gap + ขีดความสามารถบุคลากร + อัตรากำลัง',
-       cs:'HCM 1.1',cp:'SP 2.1',
-       use_peer:'HCM ประเมิน Competency Gap และขีดความสามารถ',
-       use_self:'SP นำข้อมูล HCM ไปวิเคราะห์จุดแข็ง/จุดอ่อนใน SWOT',
-       status:'none'},
-    ]},
-
-  RMIC:{label:'บริหารความเสี่ยงและควบคุมภายใน',score:'1.98',weight:7,
-    out:[
-      {peer:'SP',  id:'rm-sp-o', prio:'critical',
-       doc:'Risk Universe ปี 69 + ผลประเมิน IC + ความเสี่ยงองค์กร',
-       cs:'RM&IC 2.1',cp:'SP 2.1',
-       use_self:'RM&IC ประเมินและจัดทำ Risk Universe ระดับองค์กร',
-       use_peer:'SP นำข้อมูลความเสี่ยงไปวิเคราะห์ SWOT และวางมาตรการ',
-       status:'none'},
-      {peer:'IA',  id:'rm-ia-o', prio:'critical',
-       doc:'Risk Register + แผนบริหารความเสี่ยง + ผลติดตาม',
-       cs:'RM&IC 3.1',cp:'IA 1.1',
-       use_self:'RM&IC จัดทำและอัปเดต Risk Register พร้อมผลติดตาม',
-       use_peer:'IA นำ Risk Register ไปวาง Risk-based Audit Plan',
-       status:'none'},
-      {peer:'KM',  id:'rm-km-o', prio:'important',
-       doc:'บทเรียนความเสี่ยงที่เกิดขึ้นจริง + แนวปฏิบัติ IC',
-       cs:'RM&IC 4.1',cp:'KM 4.2',
-       use_self:'RM&IC ถอดบทเรียนจากเหตุการณ์ความเสี่ยง',
-       use_peer:'KM จัดเก็บและเผยแพร่บทเรียนให้ทั่วองค์กร',
-       status:'none'},
-      {peer:'CG',  id:'rm-cg-o', prio:'important',
-       doc:'รายงานความเสี่ยงระดับองค์กร + ผลประเมิน IC',
-       cs:'RM&IC 2.2',cp:'CG 2.2',
-       use_self:'RM&IC รายงานผลบริหารความเสี่ยงต่อคณะกรรมการ',
-       use_peer:'CG กำกับดูแลระบบบริหารความเสี่ยงให้มีประสิทธิผล',
-       status:'none'},
-    ],
-    in:[
-      {peer:'SP',  id:'sp-rm-i', prio:'critical',
-       doc:'แผนยุทธศาสตร์ + KPI เป้าหมาย + ปัจจัยเสี่ยงเชิงยุทธศาสตร์',
-       cs:'SP 6.3',cp:'RM&IC 1.1',
-       use_peer:'SP ถ่ายทอดยุทธศาสตร์และเป้าหมายสำคัญ',
-       use_self:'RM&IC กำหนด Risk Appetite ให้สอดรับวัตถุประสงค์จาก SP',
-       status:'none'},
-      {peer:'IA',  id:'ia-rm-i', prio:'critical',
-       doc:'ผลการตรวจสอบ IC + ข้อสังเกตและข้อเสนอแนะ',
-       cs:'IA 2.2',cp:'RM&IC 4.1',
-       use_peer:'IA ตรวจสอบและระบุจุดอ่อนของระบบควบคุมภายใน',
-       use_self:'RM&IC นำผลตรวจสอบมาปรับปรุงกระบวนการและมาตรการ IC',
-       status:'none'},
-    ]},
-
-  SM:{label:'การมุ่งเน้นผู้มีส่วนได้ส่วนเสีย',score:'3.08',weight:1.5,
-    out:[
-      {peer:'SP',  id:'sm-sp-o', prio:'important',
-       doc:'ความต้องการและความคาดหวังผู้มีส่วนได้เสีย',
-       cs:'SM 1.1',cp:'SP 2.1',
-       use_self:'SM รวบรวมและสังเคราะห์ความต้องการผู้มีส่วนได้เสีย',
-       use_peer:'SP นำ VoS ไปวิเคราะห์ SWOT และกำหนดยุทธศาสตร์',
-       status:'none'},
-      {peer:'KM',  id:'sm-km-o', prio:'',
-       doc:'ข้อมูลผู้มีส่วนได้เสีย + ประเด็นร้องเรียนเชิงระบบ',
-       cs:'SM 4.2',cp:'KM 4.2',
-       use_self:'SM ส่งสารสนเทศจากภายนอกให้ KM',
-       use_peer:'KM จัดเก็บและสร้างองค์ความรู้ด้านผู้มีส่วนได้เสีย',
-       status:'none'},
-      {peer:'IM',  id:'sm-im-o', prio:'',
-       doc:'ประเด็นที่ผู้มีส่วนได้เสียต้องการนวัตกรรม + Unmet Need',
-       cs:'SM 3.1',cp:'IM 2.1',
-       use_self:'SM ระบุ Unmet Need จากผู้มีส่วนได้เสีย',
-       use_peer:'IM นำ Unmet Need เป็น Input พัฒนานวัตกรรม',
-       status:'none'},
-    ],
-    in:[
-      {peer:'SP',  id:'sp-sm-i', prio:'important',
-       doc:'ยุทธศาสตร์ด้านผู้มีส่วนได้เสีย + KPI ด้าน SM',
-       cs:'SP 5.1',cp:'SM 1.1',
-       use_peer:'SP กำหนดทิศทางและ KPI ด้านผู้มีส่วนได้เสีย',
-       use_self:'SM นำยุทธศาสตร์จาก SP ไปกำหนดแผนสร้างความสัมพันธ์',
-       status:'none'},
-    ]},
-
-  CM:{label:'การมุ่งเน้นลูกค้า',score:'3.42',weight:1.5,
-    out:[
-      {peer:'SP',  id:'cm-sp-o', prio:'important',
-       doc:'Voice of Customer + ข้อมูลตลาด + ความต้องการลูกค้า',
-       cs:'CM 1.1',cp:'SP 2.1',
-       use_self:'CM รวบรวม VoC และวิเคราะห์ข้อมูลตลาดและคู่แข่ง',
-       use_peer:'SP นำ VoC ไปวิเคราะห์โอกาส/ภัยคุกคาม และวางกลยุทธ์',
-       status:'none'},
-      {peer:'IM',  id:'cm-im-o', prio:'important',
-       doc:'VoC เชิงลึก + Unmet Customer Need + แนวโน้มตลาด',
-       cs:'CM 4.1',cp:'IM 2.1',
-       use_self:'CM ส่ง VoC เชิงลึกและ Unmet Need ของลูกค้า',
-       use_peer:'IM นำ VoC เป็น Input ออกแบบนวัตกรรมบริการ',
-       status:'none'},
-      {peer:'KM',  id:'cm-km-o', prio:'',
-       doc:'ผลสำรวจความพึงพอใจ + ข้อร้องเรียน + แนวโน้มลูกค้า',
-       cs:'CM 4.2',cp:'KM 4.2',
-       use_self:'CM ส่งข้อมูลลูกค้าที่รวบรวมได้ให้ KM',
-       use_peer:'KM นำข้อมูลลูกค้าสร้างองค์ความรู้และบทเรียน',
-       status:'none'},
-    ],
-    in:[
-      {peer:'SP',  id:'sp-cm-i', prio:'important',
-       doc:'ยุทธศาสตร์ด้านลูกค้าและตลาด + KPI ด้าน CM',
-       cs:'SP 5.1',cp:'CM 1.1',
-       use_peer:'SP กำหนดทิศทางและ KPI ด้านลูกค้า',
-       use_self:'CM นำยุทธศาสตร์จาก SP ไปกำหนดแผนบริหารลูกค้า',
-       status:'none'},
-      {peer:'IM',  id:'im-cm-i', prio:'important',
-       doc:'นวัตกรรมบริการใหม่ + ผลทดสอบกับลูกค้า',
-       cs:'IM 3.1',cp:'CM 4.3',
-       use_peer:'IM พัฒนาและทดสอบนวัตกรรมบริการใหม่',
-       use_self:'CM นำนวัตกรรมจาก IM ไปให้บริการลูกค้าจริง',
-       status:'none'},
-    ]},
-
-  DT:{label:'การพัฒนาเทคโนโลยีดิจิทัล',score:'2.76',weight:3,
-    out:[
-      {peer:'KM',  id:'dt-km-o', prio:'important',
-       doc:'แพลตฟอร์มดิจิทัลรองรับ KM + ระบบจัดเก็บความรู้',
-       cs:'DT 2.1',cp:'KM 4.1',
-       use_self:'DT พัฒนาและดูแลแพลตฟอร์มดิจิทัลสำหรับ KM',
-       use_peer:'KM นำแพลตฟอร์มจาก DT ไปจัดเก็บและแบ่งปันความรู้',
-       status:'none'},
-      {peer:'RMIC',id:'dt-rm-o', prio:'important',
-       doc:'ระบบ EWS + รายงาน Cybersecurity Risk',
-       cs:'DT 5.1',cp:'RM&IC 1.1',
-       use_self:'DT ประเมินและรายงานความเสี่ยงด้าน IT และ Cybersecurity',
-       use_peer:'RM&IC รวม Digital Risk ในการบริหารความเสี่ยงองค์กร',
-       status:'none'},
-      {peer:'IM',  id:'dt-im-o', prio:'',
-       doc:'เครื่องมือดิจิทัลสนับสนุนนวัตกรรม + Innovation Platform',
-       cs:'DT 2.2',cp:'IM 4.1',
-       use_self:'DT พัฒนาแพลตฟอร์มและเครื่องมือสำหรับกระบวนการนวัตกรรม',
-       use_peer:'IM นำเครื่องมือดิจิทัลจาก DT สนับสนุนการสร้างนวัตกรรม',
-       status:'none'},
-    ],
-    in:[
-      {peer:'SP',  id:'sp-dt-i', prio:'important',
-       doc:'Digital Strategy Direction + ทิศทางเทคโนโลยี 5 ปี',
-       cs:'SP 5.3',cp:'DT 1.2',
-       use_peer:'SP กำหนดทิศทางดิจิทัลที่สอดรับยุทธศาสตร์',
-       use_self:'DT จัดทำ Digital Roadmap และ IT Master Plan',
-       status:'none'},
-      {peer:'KM',  id:'km-dt-i', prio:'important',
-       doc:'ความต้องการระบบ KM ดิจิทัล + Feature ที่ต้องการ',
-       cs:'KM 4.1',cp:'DT 2.1',
-       use_peer:'KM ระบุความต้องการและ Feature ของระบบ KM ดิจิทัล',
-       use_self:'DT นำ Requirement ไปพัฒนาและออกแบบระบบ',
-       status:'none'},
-    ]},
-
-  HCM:{label:'การบริหารทุนมนุษย์',score:'3.07',weight:3,
-    out:[
-      {peer:'SP',  id:'hcm-sp-o',prio:'critical',
-       doc:'Competency Gap + ขีดความสามารถบุคลากร + อัตรากำลัง',
-       cs:'HCM 1.1',cp:'SP 2.1',
-       use_self:'HCM ประเมิน Competency Gap และขีดความสามารถบุคลากร',
-       use_peer:'SP นำข้อมูล HCM วิเคราะห์จุดแข็ง/จุดอ่อนใน SWOT',
-       status:'none'},
-      {peer:'KM',  id:'hcm-km-o',prio:'important',
-       doc:'ข้อมูลผู้เชี่ยวชาญ + ผู้ถ่ายทอดความรู้ + IDP',
-       cs:'HCM 3.3',cp:'KM 3.3',
-       use_self:'HCM ระบุผู้เชี่ยวชาญและผู้ถ่ายทอดความรู้ในองค์กร',
-       use_peer:'KM นำข้อมูลจาก HCM สนับสนุนทีมงานและกิจกรรม KM',
-       status:'none'},
-      {peer:'IM',  id:'hcm-im-o',prio:'',
-       doc:'บุคลากรนวัตกรรม + ทักษะที่ต้องพัฒนาสำหรับ IM',
-       cs:'HCM 3.4',cp:'IM 3.2',
-       use_self:'HCM พัฒนาทักษะนวัตกรรมและจัดสรรบุคลากรสนับสนุน IM',
-       use_peer:'IM ได้บุคลากรที่มีทักษะจาก HCM ขับเคลื่อนกระบวนการนวัตกรรม',
-       status:'none'},
-    ],
-    in:[
-      {peer:'SP',  id:'sp-hcm-i',prio:'critical',
-       doc:'KPI สายงาน + Competency ที่ต้องการ + กรอบอัตรากำลัง',
-       cs:'SP 6.4',cp:'HCM 2.2',
-       use_peer:'SP ถ่ายทอด KPI ระดับองค์กรสู่ระดับสายงานและบุคคล',
-       use_self:'HCM กำหนด KPI บุคคลและแผนพัฒนา Competency',
-       status:'none'},
-      {peer:'KM',  id:'km-hcm-i',prio:'important',
-       doc:'ผลการจัดการความรู้ + แนวปฏิบัติที่ดี + ผลลัพธ์การเรียนรู้',
-       cs:'KM 5.1',cp:'HCM 3.3',
-       use_peer:'KM รวบรวมและเผยแพร่ความรู้และแนวปฏิบัติที่ดี',
-       use_self:'HCM นำผลลัพธ์ KM ไปออกแบบหลักสูตรพัฒนาบุคลากร',
-       status:'none'},
-    ]},
-
-  KM:{label:'การจัดการความรู้',score:'2.76',weight:3.5,
-    out:[
-      {peer:'RMIC',id:'km-rm-o', prio:'important',
-       doc:'บทเรียนจาก AAR + แนวปฏิบัติที่ดีด้านความเสี่ยง',
-       cs:'KM 4.2',cp:'RM&IC 4.1',
-       use_self:'KM จัดเก็บและส่งบทเรียนด้านความเสี่ยงจาก AAR',
-       use_peer:'RM&IC นำบทเรียนปรับปรุงกระบวนการบริหารความเสี่ยง',
-       status:'none'},
-      {peer:'HCM', id:'km-hcm-o',prio:'important',
-       doc:'ผลการจัดการความรู้ + แนวปฏิบัติที่ดี + ผลลัพธ์',
-       cs:'KM 5.1',cp:'HCM 3.3',
-       use_self:'KM รวบรวมและเผยแพร่ความรู้และแนวปฏิบัติที่ดี',
-       use_peer:'HCM นำผลลัพธ์ KM ออกแบบหลักสูตรพัฒนาบุคลากร',
-       status:'none'},
-      {peer:'DT',  id:'km-dt-o', prio:'important',
-       doc:'ความต้องการระบบ KM ดิจิทัล + Feature ที่ต้องการ',
-       cs:'KM 4.1',cp:'DT 2.1',
-       use_self:'KM ระบุความต้องการและ Feature ของระบบดิจิทัล',
-       use_peer:'DT นำ Requirement ไปพัฒนาและออกแบบแพลตฟอร์ม KM',
-       status:'none'},
-      {peer:'IM',  id:'km-im-o', prio:'important',
-       doc:'คลังความรู้องค์กร + Best Practice + บทเรียน AAR',
-       cs:'KM 5.2',cp:'IM 2.2',
-       use_self:'KM ส่งคลังความรู้และแนวปฏิบัติที่ดีให้ IM ต่อยอด',
-       use_peer:'IM นำฐานความรู้จาก KM พัฒนาต่อยอดเป็นนวัตกรรม',
-       status:'none'},
-    ],
-    in:[
-      {peer:'SP',  id:'sp-km-i', prio:'important',
-       doc:'ประเด็นยุทธศาสตร์ที่ต้องการความรู้ + เป้าหมายนวัตกรรม',
-       cs:'SP 5.2',cp:'KM 1.1',
-       use_peer:'SP ระบุประเด็นยุทธศาสตร์ที่ต้องการความรู้รองรับ',
-       use_self:'KM กำหนดทิศทาง KM ให้สอดรับยุทธศาสตร์จาก SP',
-       status:'none'},
-      {peer:'RMIC',id:'rm-km-i', prio:'important',
-       doc:'บทเรียนความเสี่ยงที่เกิดขึ้นจริง + แนวปฏิบัติ IC',
-       cs:'RM&IC 4.1',cp:'KM 4.2',
-       use_peer:'RM&IC ถอดบทเรียนจากเหตุการณ์ความเสี่ยง',
-       use_self:'KM จัดเก็บและเผยแพร่บทเรียนด้านความเสี่ยงทั่วองค์กร',
-       status:'none'},
-      {peer:'SM',  id:'sm-km-i', prio:'',
-       doc:'ข้อมูลผู้มีส่วนได้เสีย + ประเด็นร้องเรียนเชิงระบบ',
-       cs:'SM 4.2',cp:'KM 4.2',
-       use_peer:'SM รวบรวมสารสนเทศจากภายนอกและผู้มีส่วนได้เสีย',
-       use_self:'KM จัดเก็บสร้างองค์ความรู้ด้านผู้มีส่วนได้เสีย',
-       status:'none'},
-      {peer:'CM',  id:'cm-km-i', prio:'',
-       doc:'ผลสำรวจความพึงพอใจ + ข้อร้องเรียน + แนวโน้มลูกค้า',
-       cs:'CM 4.2',cp:'KM 4.2',
-       use_peer:'CM รวบรวมข้อมูลลูกค้าจากทุกช่องทาง',
-       use_self:'KM นำข้อมูลลูกค้าจาก CM สร้างองค์ความรู้และบทเรียน',
-       status:'none'},
-      {peer:'IM',  id:'im-km-i', prio:'important',
-       doc:'ผลนวัตกรรม + บทเรียนจากการพัฒนานวัตกรรม',
-       cs:'IM 4.2',cp:'KM 6.1',
-       use_peer:'IM บันทึกผลลัพธ์และบทเรียนจากกระบวนการนวัตกรรม',
-       use_self:'KM จัดเก็บผลนวัตกรรมเป็นส่วนหนึ่งของผลลัพธ์ KM',
-       status:'none'},
-    ]},
-
-  IM:{label:'การจัดการนวัตกรรม',score:'1.99',weight:3.5,
-    out:[
-      {peer:'KM',  id:'im-km-o', prio:'important',
-       doc:'ผลนวัตกรรม + บทเรียนจากการพัฒนานวัตกรรม',
-       cs:'IM 4.2',cp:'KM 6.1',
-       use_self:'IM บันทึกผลลัพธ์และบทเรียนจากกระบวนการนวัตกรรม',
-       use_peer:'KM จัดเก็บผลนวัตกรรมเป็นส่วนหนึ่งของผลลัพธ์ KM',
-       status:'none'},
-      {peer:'CM',  id:'im-cm-o', prio:'important',
-       doc:'นวัตกรรมบริการใหม่ + ผลทดสอบกับลูกค้า',
-       cs:'IM 3.1',cp:'CM 4.3',
-       use_self:'IM พัฒนาและทดสอบนวัตกรรมบริการใหม่',
-       use_peer:'CM นำนวัตกรรมบริการจาก IM ไปให้บริการลูกค้าจริง',
-       status:'none'},
-      {peer:'SP',  id:'im-sp-o', prio:'important',
-       doc:'ผลลัพธ์นวัตกรรมองค์กร + KPI ด้านนวัตกรรม',
-       cs:'IM 5.1',cp:'SP 7.1',
-       use_self:'IM รายงานผลลัพธ์นวัตกรรมและ KPI ต่อฝ่ายยุทธศาสตร์',
-       use_peer:'SP นำผลนวัตกรรมไปทบทวนและปรับปรุงยุทธศาสตร์',
-       status:'none'},
-    ],
-    in:[
-      {peer:'SP',  id:'sp-im-i', prio:'important',
-       doc:'ทิศทางนวัตกรรมองค์กร + เป้าหมายนวัตกรรม ปี 69',
-       cs:'SP 5.4',cp:'IM 1.1',
-       use_peer:'SP กำหนดเป้าหมายและทิศทางนวัตกรรมองค์กร',
-       use_self:'IM นำทิศทางจาก SP กำหนดวิสัยทัศน์และแผนนวัตกรรม',
-       status:'none'},
-      {peer:'KM',  id:'km-im-i', prio:'important',
-       doc:'คลังความรู้องค์กร + Best Practice + บทเรียน AAR',
-       cs:'KM 5.2',cp:'IM 2.2',
-       use_peer:'KM ส่งคลังความรู้และแนวปฏิบัติที่ดีให้ IM',
-       use_self:'IM นำฐานความรู้จาก KM พัฒนาต่อยอดเป็นนวัตกรรม',
-       status:'none'},
-      {peer:'SM',  id:'sm-im-i', prio:'',
-       doc:'ประเด็นที่ผู้มีส่วนได้เสียต้องการนวัตกรรม + Unmet Need',
-       cs:'SM 3.1',cp:'IM 2.1',
-       use_peer:'SM ระบุ Unmet Need จากผู้มีส่วนได้เสีย',
-       use_self:'IM นำ Unmet Need เป็น Input ออกแบบและพัฒนานวัตกรรม',
-       status:'none'},
-      {peer:'CM',  id:'cm-im-i', prio:'important',
-       doc:'VoC เชิงลึก + Unmet Customer Need + แนวโน้มตลาด',
-       cs:'CM 4.1',cp:'IM 2.1',
-       use_peer:'CM ส่ง VoC เชิงลึกและ Unmet Need ของลูกค้า',
-       use_self:'IM นำ VoC ออกแบบนวัตกรรมบริการตรงความต้องการลูกค้า',
-       status:'none'},
-      {peer:'HCM', id:'hcm-im-i',prio:'',
-       doc:'บุคลากรนวัตกรรม + ทักษะด้านนวัตกรรม',
-       cs:'HCM 3.4',cp:'IM 3.2',
-       use_peer:'HCM พัฒนาทักษะและจัดสรรบุคลากรด้านนวัตกรรม',
-       use_self:'IM ได้บุคลากรที่มีทักษะจาก HCM ขับเคลื่อนกระบวนการนวัตกรรม',
-       status:'none'},
-      {peer:'DT',  id:'dt-im-i', prio:'',
-       doc:'เครื่องมือดิจิทัลสนับสนุนนวัตกรรม + Innovation Platform',
-       cs:'DT 2.2',cp:'IM 4.1',
-       use_peer:'DT พัฒนาแพลตฟอร์มและเครื่องมือดิจิทัลสำหรับนวัตกรรม',
-       use_self:'IM นำเครื่องมือดิจิทัลจาก DT สนับสนุนการสร้างนวัตกรรม',
-       status:'none'},
-    ]},
-
-  IA:{label:'การตรวจสอบภายใน',score:'2.75',weight:7,
-    out:[
-      {peer:'CG',  id:'ia-cg-o', prio:'critical',
-       doc:'รายงานผลตรวจสอบประจำปี + ข้อเสนอแนะสำคัญ',
-       cs:'IA 2.3',cp:'CG 3.1',
-       use_self:'IA รายงานผลตรวจสอบโดยตรงต่อคณะกรรมการตรวจสอบ',
-       use_peer:'CG พิจารณาและติดตามข้อเสนอแนะจากการตรวจสอบ',
-       status:'none'},
-      {peer:'RMIC',id:'ia-rm-o', prio:'critical',
-       doc:'ผลการตรวจสอบ IC + ข้อสังเกตสำหรับ RM&IC',
-       cs:'IA 2.2',cp:'RM&IC 4.1',
-       use_self:'IA ตรวจสอบและระบุจุดอ่อนของระบบควบคุมภายใน',
-       use_peer:'RM&IC นำผลตรวจสอบปรับปรุงกระบวนการและมาตรการ IC',
-       status:'none'},
-    ],
-    in:[
-      {peer:'SP',  id:'sp-ia-i', prio:'critical',
-       doc:'แผนยุทธศาสตร์ + ประเด็นสำคัญเชิงกลยุทธ์',
-       cs:'SP 6.1',cp:'IA 1.1',
-       use_peer:'SP แจ้งประเด็นยุทธศาสตร์ที่ต้องได้รับการตรวจสอบ',
-       use_self:'IA วาง Strategic Audit Plan ให้สะท้อนยุทธศาสตร์',
-       status:'none'},
-      {peer:'CG',  id:'cg-ia-i', prio:'critical',
-       doc:'กฎบัตรคณะกรรมการตรวจสอบ + ขอบเขตการตรวจสอบ',
-       cs:'CG 3.1',cp:'IA 1.1',
-       use_peer:'CG อนุมัติกฎบัตรและกำหนดขอบเขตงานตรวจสอบ',
-       use_self:'IA ใช้กฎบัตรจาก CG กำหนดขอบเขตและความเป็นอิสระ',
-       status:'none'},
-      {peer:'RMIC',id:'rm-ia-i', prio:'critical',
-       doc:'Risk Register + แผนบริหารความเสี่ยง + ผลติดตาม',
-       cs:'RM&IC 3.1',cp:'IA 1.1',
-       use_peer:'RM&IC จัดทำและอัปเดต Risk Register พร้อมผลติดตาม',
-       use_self:'IA นำ Risk Register ไปวาง Risk-based Audit Plan',
-       status:'none'},
-    ]},
-};
-
-// ── STATE ──────────────────────────────────────────────────
-let cur='CG';
-const docs={};
-const p=new URLSearchParams(window.location.search).get('domain');
-if(p&&LD[p]) cur=p;
-document.getElementById('domain-select').value=cur;
-
-// ── HELPERS ────────────────────────────────────────────────
-const pC=k=>DC[k]||DC.SP;
-const dotC=s=>s==='confirmed'||s==='received'?'#22c55e':s==='sent'?'#f59e0b':'#ef4444';
-function outCC(s){return s==='confirmed'?'status-confirmed':s==='sent'?'status-sent':'status-none';}
-function outPill(s){
-  if(s==='confirmed') return['s-confirmed','ยืนยันรับแล้ว ✓'];
-  if(s==='sent')      return['s-sent','ส่งแล้ว / รอยืนยัน'];
-  return['s-none','ยังไม่ส่ง'];
-}
-function inCC(s){return s==='received'?'status-received':s==='sent'?'status-sent':'status-none';}
-function inPill(s){
-  if(s==='received') return['s-received','รับแล้ว ✓'];
-  if(s==='sent')     return['s-sent','รอเรากดรับ'];
-  return['s-none','ยังไม่ส่งมา'];
-}
-function prioBadge(prio){
-  if(prio==='critical') return`<span class="prio-badge prio-critical">★ ต้องมี</span>`;
-  if(prio==='important') return`<span class="prio-badge prio-important">◆ มีและดี</span>`;
-  return'';
-}
-function prioCardClass(prio){
-  if(prio==='critical') return' prio-hi';
-  if(prio==='important') return' prio-md';
-  return'';
-}
-const docSVG=`<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" class="ico"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
-
-// ── RENDER OUT ─────────────────────────────────────────────
-function renderOut(c){
-  const pc=pC(c.peer),d=docs[c.id],s=c.status;
-  const[pillCls,pillTxt]=outPill(s);
-  const sendDisabled=(!d||s==='confirmed')?'disabled':'';
-  const sendLabel=s==='confirmed'?'สมบูรณ์ ✓':s==='sent'?'ส่งซ้ำ':'ส่ง →';
-  return`<div class="conn-card ${outCC(s)}${prioCardClass(c.prio)}">
-  <div class="conn-top">
-    <div class="peer-avatar" style="background:${pc.bg};color:${pc.color}">${pc.abbr}</div>
-    <div class="conn-info">
-      <div class="conn-top-row">
-        <span class="conn-peer-name" style="color:${pc.color}">→ ${pc.abbr}</span>
-        ${prioBadge(c.prio)}
-      </div>
-      <div class="conn-doc-desc">${c.doc}</div>
-      <div class="crit-row">
-        <span class="crit-self">${c.cs}</span>
-        <span class="crit-sep">|</span>
-        <span class="crit-peer">${c.cp}</span>
-      </div>
-    </div>
-    <span class="status-pill ${pillCls}">${pillTxt}</span>
-  </div>
-  <div class="guideline">
-    <span class="guide-icon">↗</span>
-    <span class="guide-text"><strong>เราทำ:</strong> ${c.use_self} &nbsp;·&nbsp; <strong>${pc.abbr} นำไป:</strong> ${c.use_peer}</span>
-  </div>
-  <div class="conn-bottom">
-    <div class="doc-area">
-      ${d?`${docSVG}<a class="doc-link" href="${d.url}" target="_blank">${d.name}</a>`:`<span class="no-doc">ยังไม่มีเอกสาร</span>`}
-    </div>
-    <button class="btn btn-attach" onclick="openModal('${c.id}','${pc.abbr}')">${d?'เปลี่ยน':'แนบ Drive'}</button>
-    <button class="btn btn-send" onclick="doSend('${c.id}')" ${sendDisabled}>${sendLabel}</button>
-  </div>
-</div>`;
-}
-
-// ── RENDER IN ──────────────────────────────────────────────
-function renderIn(c){
-  const pc=pC(c.peer),d=docs[c.id],s=c.status;
-  const[pillCls,pillTxt]=inPill(s);
-  const canRecv=s==='sent';
-  const noDocTxt=s==='none'?'รอเอกสารจาก '+pc.abbr:s==='received'?'รับแล้ว ✓':'เอกสารมาแล้ว — กดรับ';
-  return`<div class="conn-card ${inCC(s)}${prioCardClass(c.prio)}">
-  <div class="conn-top">
-    <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;margin-top:3px">
-      <div class="notify-dot" style="background:${dotC(s)}"></div>
-      <div class="peer-avatar" style="background:${pc.bg};color:${pc.color}">${pc.abbr}</div>
-    </div>
-    <div class="conn-info">
-      <div class="conn-top-row">
-        <span class="conn-peer-name" style="color:${pc.color}">← ${pc.abbr}</span>
-        ${prioBadge(c.prio)}
-      </div>
-      <div class="conn-doc-desc">${c.doc}</div>
-      <div class="crit-row">
-        <span class="crit-peer">${c.cs}</span>
-        <span class="crit-sep">|</span>
-        <span class="crit-self">${c.cp}</span>
-      </div>
-    </div>
-    <span class="status-pill ${pillCls}">${pillTxt}</span>
-  </div>
-  <div class="guideline">
-    <span class="guide-icon">↙</span>
-    <span class="guide-text"><strong>${pc.abbr} ทำ:</strong> ${c.use_peer} &nbsp;·&nbsp; <strong>เรานำไป:</strong> ${c.use_self}</span>
-  </div>
-  <div class="conn-bottom">
-    <div class="doc-area">
-      ${d?`${docSVG}<a class="doc-link" href="${d.url}" target="_blank">${d.name}</a>`:`<span class="no-doc">${noDocTxt}</span>`}
-    </div>
-    <button class="btn btn-recv" onclick="doReceive('${c.id}')" ${canRecv?'':'disabled'}>
-      ${s==='received'?'รับแล้ว ✓':s==='sent'?'กดรับเอกสาร':'รอเอกสาร'}
-    </button>
-  </div>
-</div>`;
-}
-
-// ── SUMMARY ────────────────────────────────────────────────
-function buildSum(items,type){
-  const ok=items.filter(i=>i.status==='confirmed'||i.status==='received').length;
-  const mid=items.filter(i=>i.status==='sent').length;
-  const no=items.filter(i=>i.status==='none').length;
-  return`<span class="sum-chip" style="background:var(--green-bg);border-color:var(--green-bd);color:var(--green)">${ok} ${type==='out'?'ยืนยันครบ':'รับแล้ว'}</span>
-<span class="sum-chip" style="background:var(--yellow-bg);border-color:var(--yellow-bd);color:var(--yellow)">${mid} ${type==='out'?'รอยืนยัน':'รอกดรับ'}</span>
-<span class="sum-chip" style="background:var(--red-bg);border-color:var(--red-bd);color:var(--red)">${no} ${type==='out'?'ยังไม่ส่ง':'รอจากอีกฝ่าย'}</span>`;
-}
-
-function renderAll(){
-  const d=LD[cur],c=DC[cur]||DC.SP;
-  const wt=d.weight||'—';
-  const badge=`<div class="domain-badge" style="background:${c.bg};color:${c.color};border:1px solid ${c.color}40">
-    <span style="font-family:'IBM Plex Mono',monospace;font-weight:700">${c.abbr}</span>
-    ${d.label} &nbsp;·&nbsp; คะแนน ${d.score} &nbsp;·&nbsp; น.น. ${wt}%
-  </div>`;
-  ['out-badge','in-badge'].forEach(id=>document.getElementById(id).innerHTML=badge);
-  document.getElementById('out-sum').innerHTML=buildSum(d.out,'out');
-  document.getElementById('in-sum').innerHTML=buildSum(d.in,'in');
-  document.getElementById('out-cards').innerHTML=d.out.map(renderOut).join('');
-  document.getElementById('in-cards').innerHTML=d.in.map(renderIn).join('');
-}
-
-// ── ACTIONS ────────────────────────────────────────────────
-function switchDomain(v){cur=v;document.getElementById('bcast-log').classList.remove('show');renderAll();}
-function doSend(id){
-  const c=LD[cur].out.find(x=>x.id===id);
-  if(c&&c.status!=='confirmed'){c.status='sent';renderAll();}
-}
-function doReceive(id){
-  const c=LD[cur].in.find(x=>x.id===id);
-  if(c&&c.status==='sent'){
-    c.status='received';
-    for(const dk in LD){const m=LD[dk].out.find(x=>x.id===id);if(m){m.status='confirmed';break;}}
-    renderAll();
-  }
-}
-function doBroadcast(){
-  const d=LD[cur],btn=document.getElementById('bcast-btn');
-  const changed=[],skipped=[];
-  d.out.forEach(c=>{
-    const pc=pC(c.peer);
-    if(c.status==='none'){
-      skipped.push(`<div class="log-row"><div class="log-dot" style="background:var(--text3)"></div>
-        <span style="color:var(--text3);font-family:'IBM Plex Mono',monospace">${pc.abbr}</span>
-        <span class="log-skip">ข้าม — ยังไม่มีการเปลี่ยนแปลง</span></div>`);
+const DIMS = [{dim:"CG", total:5}, {dim:"SP", total:12}, {dim:"RMIC", total:6}, {dim:"SM", total:4}, {dim:"CM", total:5}, {dim:"DT", total:5}, {dim:"HCM", total:5}, {dim:"KM", total:9}, {dim:"IM", total:9}, {dim:"IA", total:5}];
+window.addEventListener('DOMContentLoaded', () => {
+  DIMS.forEach(({dim, total}) => {
+    const pre = 'ld_' + dim.toLowerCase() + '_';
+    let done=0, wait=0, pend=0;
+    for(let i=0; i<localStorage.length; i++){
+      const k = localStorage.key(i);
+      if(!k.startsWith(pre+'st_')) continue;
+      const v = localStorage.getItem(k);
+      if(v==='confirmed'||v==='received') done++;
+      else if(v==='sent') wait++;
+      else pend++;
+    }
+    const card = document.getElementById('hp-'+dim);
+    if(!card) return;
+    const counted = done+wait+pend;
+    const pending = total - done;
+    if(done === total){
+      card.className='dc-chip chip-done'; card.textContent='ครบแล้ว ✓';
     } else {
-      const col=c.status==='confirmed'?'#22c55e':'#f59e0b';
-      const lbl=c.status==='confirmed'?'ยืนยันแล้ว ✓':'ส่งแล้ว / รอยืนยัน';
-      changed.push(`<div class="log-row"><div class="log-dot" style="background:${col}"></div>
-        <span style="color:${pc.color};font-family:'IBM Plex Mono',monospace">${pc.abbr}</span>
-        <span>← แจ้งสถานะ: ${lbl}</span></div>`);
+      card.className='dc-chip chip-pend'; card.textContent=pending+' ค้าง';
+      if(wait>0){
+        card.insertAdjacentHTML('afterend',
+          `<span class="dc-chip chip-wait" style="margin-left:4px">${wait} รอยืนยัน</span>`);
+      }
     }
   });
-  document.getElementById('log-rows').innerHTML=
-    (changed.length?`<div style="font-size:11px;color:var(--text2);margin-bottom:3px">แจ้ง ${changed.length} ด้าน:</div>`:'')
-    +changed.join('')
-    +(skipped.length?`<div style="font-size:11px;color:var(--text3);margin:6px 0 3px">ข้าม ${skipped.length} ด้าน:</div>`:'')
-    +skipped.join('');
-  document.getElementById('bcast-log').classList.add('show');
-  btn.classList.add('fired');
-  btn.textContent=changed.length?`✓ แจ้ง ${changed.length} ด้านแล้ว (ข้าม ${skipped.length})`:'— ไม่มีด้านที่ต้องแจ้ง';
-  setTimeout(()=>{btn.classList.remove('fired');btn.innerHTML='&#9432; แจ้งเฉพาะด้านที่อัปเดต';},3500);
-}
-
-// ── MODAL ──────────────────────────────────────────────────
-let modalTarget=null;
-function openModal(id,peer){
-  modalTarget=id;
-  document.getElementById('modal-sub').textContent=`ส่งให้ ${peer} · ลิงก์ Google Drive`;
-  const ex=docs[id];
-  document.getElementById('m-name').value=ex?ex.name:'';
-  document.getElementById('m-url').value=ex?ex.url:'';
-  document.getElementById('modal').classList.add('open');
-}
-function closeModal(){document.getElementById('modal').classList.remove('open');modalTarget=null;}
-function confirmAttach(){
-  const n=document.getElementById('m-name').value.trim();
-  const u=document.getElementById('m-url').value.trim();
-  if(!n||!u){alert('กรุณากรอกชื่อเอกสารและลิงก์ Google Drive');return;}
-  docs[modalTarget]={name:n,url:u};
-  closeModal();renderAll();
-}
-document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
-
-renderAll();
+});
 </script>
 </body>
 </html>
