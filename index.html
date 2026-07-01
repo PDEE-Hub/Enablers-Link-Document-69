@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>CBE · LINK — ระบบแลกเปลี่ยนเอกสาร Enablers ปี 2569</title>
+<title>CBE · LINK — Linkage Exchange ปี 2569</title>
 <style>
 @font-face{font-family:'Anakotmai';font-weight:300;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-light.woff2') format('woff2');}
 @font-face{font-family:'Anakotmai';font-weight:500;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-medium.woff2') format('woff2');}
@@ -11,207 +11,266 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --sans:'Anakotmai',sans-serif;--mono:'IBM Plex Mono',monospace;
-  --bg:#f0f2f5;--card:#fff;--border:#e4e7ed;--border2:#d1d5db;
-  --text:#1a1d2e;--text2:#5a6074;--text3:#9ca3af;
-  --navy:#1e3a5c;--gold:#b8862f;
-  --s-green:#059669;--s-green-bg:#ecfdf5;--s-green-bd:#6ee7b7;
-  --s-red:#dc2626;--s-red-bg:#fef2f2;--s-red-bd:#fecaca;
-  --s-yellow:#d97706;--s-yellow-bg:#fffbeb;--s-yellow-bd:#fcd34d;
-  --radius:10px;--shadow:0 1px 3px rgba(0,0,0,.07),0 0 0 1px rgba(0,0,0,.04);
+  --bg:#f8f7f4; --bg2:#f1efe9; --card:#fff;
+  --border:#e6e3dc; --border2:#ccc9bf;
+  --text:#1c1f24; --text2:#5a5f68; --text3:#9a9da3;
+  --navy:#1e3a5c; --gold:#b8862f; --gold-lt:#f6eed9;
+  --green:#059669; --green-bg:#ecfdf5; --green-bd:#6ee7b7;
+  --red:#b91c1c; --red-bg:#fef2f2; --red-bd:#fecaca;
+  --amber:#c2610f; --amber-bg:#fff7ed; --amber-bd:#fed7aa;
+  --r:6px;
+  --sh:0 1px 2px rgba(28,31,36,.06),0 0 0 1px rgba(28,31,36,.04);
+  --sh-md:0 4px 14px rgba(28,31,36,.1),0 0 0 1px rgba(28,31,36,.05);
+  --sans:'Anakotmai',sans-serif; --mono:'IBM Plex Mono',monospace;
 }
-body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;}
-.hero{background:var(--navy);padding:28px 24px 24px;text-align:center;}
-.hero-eyebrow{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.45);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-.hero-title{font-size:24px;font-weight:700;color:#fff;margin-bottom:4px;}
-.hero-sub{font-size:13px;color:rgba(255,255,255,.55);}
-.hero-gold{color:var(--gold);}
-.page{max-width:1100px;margin:0 auto;padding:28px 20px 48px;}
-.sec-label{font-size:11px;font-weight:700;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;font-family:var(--mono);}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:32px;}
-.dim-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;cursor:pointer;text-decoration:none;color:inherit;display:block;transition:all .18s;box-shadow:var(--shadow);}
-.dim-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.09);}
-.dc-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.dc-av{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;font-family:var(--mono);flex-shrink:0;}
-.dc-label{font-size:14px;font-weight:700;}
-.dc-th{font-size:11px;color:var(--text2);margin-bottom:10px;line-height:1.4;}
-.dc-stats{display:flex;gap:6px;flex-wrap:wrap;}
-.dc-chip{font-size:10px;font-weight:600;padding:2px 7px;border-radius:12px;border:1px solid;font-family:var(--mono);}
-.chip-pend{background:var(--s-red-bg);color:var(--s-red);border-color:var(--s-red-bd);}
-.chip-done{background:var(--s-green-bg);color:var(--s-green);border-color:var(--s-green-bd);}
-.chip-wait{background:var(--s-yellow-bg);color:var(--s-yellow);border-color:var(--s-yellow-bd);}
-.info-bar{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;box-shadow:var(--shadow);}
-.info-item{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px;}
-.info-item strong{color:var(--text);}
-.plan-hub-bar{background:var(--navy);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:16px;margin-bottom:16px;box-shadow:var(--shadow);text-decoration:none;color:inherit;transition:opacity .18s;}
-.plan-hub-bar:hover{opacity:.88;}
-.phb-av{width:42px;height:42px;border-radius:10px;background:rgba(184,134,47,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.phb-av svg{width:20px;height:20px;color:var(--gold);}
-.phb-title{font-size:14px;font-weight:700;color:#fff;}
-.phb-sub{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px;}
-.phb-cta{margin-left:auto;font-size:11px;font-weight:700;background:var(--gold);color:#fff;padding:6px 14px;border-radius:6px;white-space:nowrap;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.55;}
+
+/* ── NAV ── */
+.nav{background:var(--navy);height:52px;display:flex;align-items:center;padding:0 40px;gap:14px;position:sticky;top:0;z-index:60;}
+.nav-anchor{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;}
+.nav-icon{width:26px;height:26px;}
+.nav-name{font-size:13px;font-weight:700;color:#fff;}
+.nav-sub{font-size:9px;color:rgba(255,255,255,.38);margin-top:1px;}
+.nav-sep{width:1px;height:22px;background:rgba(255,255,255,.14);}
+.nav-lbl{font-size:13px;font-weight:600;color:rgba(255,255,255,.82);}
+.nav-tag{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--gold);background:rgba(184,134,47,.14);padding:3px 10px;border-radius:20px;letter-spacing:.5px;white-space:nowrap;}
+
+/* ── BANNER ── */
+.banner{background:var(--bg);border-bottom:1px solid var(--border);padding:40px 40px 36px;}
+.banner-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 216px;gap:64px;align-items:center;}
+.kicker{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.kicker::before{content:'';width:20px;height:2px;background:var(--gold);flex-shrink:0;}
+.banner-h{font-size:36px;font-weight:700;color:var(--navy);line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px;}
+.banner-h .g{color:var(--gold);}
+.banner-sub{font-size:14px;color:var(--text2);line-height:1.65;max-width:500px;}
+.statbox{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:20px 20px 16px;display:flex;flex-direction:column;gap:12px;}
+.st{display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+.st-n{font-size:24px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1;}
+.st-n.sm{font-size:20px;}
+.st-l{font-size:11px;color:var(--text3);}
+.st-div{height:1px;background:var(--border);}
+
+/* ── PAGE ── */
+.page{max-width:1160px;margin:0 auto;padding:32px 40px 64px;}
+.sec-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
+
+/* ── GRID ── */
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:40px;}
+
+/* ── DIM CARD ── */
+.dc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);display:flex;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .16s,transform .16s,border-color .16s;box-shadow:var(--sh);}
+.dc:hover{box-shadow:var(--sh-md);border-color:var(--border2);transform:translateY(-2px);}
+.dc-bar{width:3px;flex-shrink:0;}
+.dc-in{flex:1;padding:16px 14px 14px;}
+.dc-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;}
+.dc-code{font-family:var(--mono);font-size:9px;font-weight:500;color:var(--text3);letter-spacing:.8px;text-transform:uppercase;}
+.dc-tot{font-family:var(--mono);font-size:9px;color:var(--text3);}
+.dc-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:10px;}
+.dc-st{display:flex;gap:4px;flex-wrap:wrap;}
+.chip{font-family:var(--mono);font-size:9px;font-weight:500;padding:2px 7px;border-radius:20px;border:1px solid transparent;}
+.chip-pend{background:var(--red-bg);color:var(--red);border-color:var(--red-bd);}
+.chip-done{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
+.chip-wait{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bd);}
+
+/* ── PLAN HUB ── */
+.planhub{display:flex;align-items:center;gap:20px;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r);padding:20px 24px;margin-bottom:24px;box-shadow:var(--sh);text-decoration:none;color:inherit;transition:box-shadow .16s;}
+.planhub:hover{box-shadow:var(--sh-md);}
+.ph-ico{width:40px;height:40px;border-radius:8px;background:var(--gold-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ph-ico svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.8;}
+.ph-ey{font-family:var(--mono);font-size:9px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;}
+.ph-ttl{font-size:15px;font-weight:700;color:var(--navy);}
+.ph-sub{font-size:12px;color:var(--text2);margin-top:2px;}
+.ph-btn{margin-left:auto;flex-shrink:0;font-size:12px;font-weight:700;color:var(--navy);border:1.5px solid var(--border2);padding:7px 16px;border-radius:var(--r);transition:all .15s;white-space:nowrap;}
+.planhub:hover .ph-btn{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+/* ── LEGEND ── */
+.legend{display:flex;gap:24px;padding:14px 0 0;border-top:1px solid var(--border);font-size:12px;color:var(--text3);flex-wrap:wrap;align-items:center;}
+.legend strong{color:var(--text2);font-weight:600;}
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-eyebrow">Port Authority of Thailand — กองประเมินผลองค์กร</div>
-  <div class="hero-title">CBE · LINK <span class="hero-gold">Linkage Exchange</span></div>
-  <div class="hero-sub">ระบบแลกเปลี่ยนเอกสารเชื่อมโยง 10 ด้าน Enablers ปี 2569 — เลือกด้านของคุณเพื่อจัดการเอกสาร</div>
+<nav class="nav">
+  <a href="#" class="nav-anchor">
+    <svg class="nav-icon" viewBox="0 0 28 28" fill="none">
+      <circle cx="14" cy="6" r="2.5" stroke="white" stroke-width="1.4" fill="none"/>
+      <line x1="14" y1="8.5" x2="14" y2="22" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="8" y1="12" x2="20" y2="12" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M8 12 C7 16.5 9 21 14 22.5 C19 21 21 16.5 20 12" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <div class="nav-name">กทท.</div>
+      <div class="nav-sub">การท่าเรือแห่งประเทศไทย</div>
+    </div>
+  </a>
+  <div class="nav-sep"></div>
+  <span class="nav-lbl">CBE · LINK — Linkage Exchange</span>
+  <span class="nav-tag">FY 2569</span>
+</nav>
+
+<div class="banner">
+  <div class="banner-in">
+    <div>
+      <div class="kicker">SE-AM Enablers · กองประเมินผลองค์กร</div>
+      <h1 class="banner-h">Linkage<br><span class="g">Exchange</span></h1>
+      <p class="banner-sub">ระบบแลกเปลี่ยนเอกสารเชื่อมโยงระหว่างด้าน — เลือกด้านของคุณเพื่อจัดการเอกสาร</p>
+    </div>
+    <div class="statbox">
+      <div class="st"><span class="st-n">10</span><span class="st-l">ด้าน Enablers</span></div>
+      <div class="st-div"></div>
+      <div class="st"><span class="st-n">65</span><span class="st-l">เอกสารทั้งหมด</span></div>
+      <div class="st-div"></div>
+      <div class="st"><span class="st-n sm" id="total-done">—</span><span class="st-l">ดำเนินการแล้ว</span></div>
+      <div class="st"><span class="st-n sm" id="total-pend">—</span><span class="st-l">ค้างดำเนินการ</span></div>
+    </div>
+  </div>
 </div>
 
-<div class="page">
-  <div class="sec-label">เลือกด้านที่คุณรับผิดชอบ</div>
+<main class="page">
+  <div class="sec-lbl">เลือกด้านที่คุณรับผิดชอบ</div>
   <div class="grid">
-    
-    <a href="RDE_LD_CG69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#eff6ff;color:#1e3a8a;">CG</div>
-        <div class="dc-label">CG</div>
-      </div>
-      <div class="dc-th">การกำกับดูแลที่ดี</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-CG">5 รายการ</span>
+
+    <a href="RDE_LD_CG69.html" class="dc">
+      <div class="dc-bar" style="background:#1e3a8a;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">CG</span><span class="dc-tot">5 รายการ</span></div>
+        <div class="dc-name">การกำกับดูแลที่ดี</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-CG">5 ค้าง</span></div>
       </div>
     </a>
-    <a href="RDE_LD_SP69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#eef2ff;color:#3730a3;">SP</div>
-        <div class="dc-label">SP</div>
-      </div>
-      <div class="dc-th">การวางแผนยุทธศาสตร์</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-SP">12 รายการ</span>
-      </div>
-    </a>
-    <a href="RDE_LD_RMIC69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#fff7ed;color:#9a3412;">RM&IC</div>
-        <div class="dc-label">RM&IC</div>
-      </div>
-      <div class="dc-th">บริหารความเสี่ยงและควบคุมภายใน</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-RMIC">6 รายการ</span>
+
+    <a href="RDE_LD_SP69.html" class="dc">
+      <div class="dc-bar" style="background:#3730a3;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">SP</span><span class="dc-tot">12 รายการ</span></div>
+        <div class="dc-name">การวางแผนยุทธศาสตร์</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-SP">12 ค้าง</span></div>
       </div>
     </a>
-    <a href="RDE_LD_SM69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#f0fdf4;color:#166534;">SM</div>
-        <div class="dc-label">SM</div>
-      </div>
-      <div class="dc-th">การมุ่งเน้นผู้มีส่วนได้เสีย</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-SM">4 รายการ</span>
-      </div>
-    </a>
-    <a href="RDE_LD_CM69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#ecfeff;color:#164e63;">CM</div>
-        <div class="dc-label">CM</div>
-      </div>
-      <div class="dc-th">การมุ่งเน้นลูกค้า</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-CM">5 รายการ</span>
+
+    <a href="RDE_LD_RMIC69.html" class="dc">
+      <div class="dc-bar" style="background:#9a3412;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">RM&amp;IC</span><span class="dc-tot">6 รายการ</span></div>
+        <div class="dc-name">บริหารความเสี่ยงและควบคุมภายใน</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-RMIC">6 ค้าง</span></div>
       </div>
     </a>
-    <a href="RDE_LD_DT69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#eef2ff;color:#4338ca;">DT</div>
-        <div class="dc-label">DT</div>
-      </div>
-      <div class="dc-th">การเปลี่ยนผ่านดิจิทัล</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-DT">5 รายการ</span>
-      </div>
-    </a>
-    <a href="RDE_LD_HCM69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#f0fdf4;color:#065f46;">HCM</div>
-        <div class="dc-label">HCM</div>
-      </div>
-      <div class="dc-th">การบริหารทุนมนุษย์</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-HCM">5 รายการ</span>
+
+    <a href="RDE_LD_SM69.html" class="dc">
+      <div class="dc-bar" style="background:#166534;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">SM</span><span class="dc-tot">4 รายการ</span></div>
+        <div class="dc-name">การมุ่งเน้นผู้มีส่วนได้เสีย</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-SM">4 ค้าง</span></div>
       </div>
     </a>
-    <a href="RDE_LD_KM69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#fff7ed;color:#7c2d12;">KM</div>
-        <div class="dc-label">KM</div>
-      </div>
-      <div class="dc-th">การจัดการความรู้</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-KM">9 รายการ</span>
-      </div>
-    </a>
-    <a href="RDE_LD_IM69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#fef2f2;color:#991b1b;">IM</div>
-        <div class="dc-label">IM</div>
-      </div>
-      <div class="dc-th">การจัดการนวัตกรรม</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-IM">9 รายการ</span>
+
+    <a href="RDE_LD_CM69.html" class="dc">
+      <div class="dc-bar" style="background:#164e63;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">CM</span><span class="dc-tot">5 รายการ</span></div>
+        <div class="dc-name">การมุ่งเน้นลูกค้า</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-CM">5 ค้าง</span></div>
       </div>
     </a>
-    <a href="RDE_LD_IA69.html" class="dim-card">
-      <div class="dc-top">
-        <div class="dc-av" style="background:#f8fafc;color:#334155;">IA</div>
-        <div class="dc-label">IA</div>
-      </div>
-      <div class="dc-th">การตรวจสอบภายใน</div>
-      <div class="dc-stats">
-        <span class="dc-chip chip-pend" id="hp-IA">5 รายการ</span>
+
+    <a href="RDE_LD_DT69.html" class="dc">
+      <div class="dc-bar" style="background:#4338ca;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">DT</span><span class="dc-tot">5 รายการ</span></div>
+        <div class="dc-name">การเปลี่ยนผ่านดิจิทัล</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-DT">5 ค้าง</span></div>
       </div>
     </a>
+
+    <a href="RDE_LD_HCM69.html" class="dc">
+      <div class="dc-bar" style="background:#065f46;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">HCM</span><span class="dc-tot">5 รายการ</span></div>
+        <div class="dc-name">การบริหารทุนมนุษย์</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-HCM">5 ค้าง</span></div>
+      </div>
+    </a>
+
+    <a href="RDE_LD_KM69.html" class="dc">
+      <div class="dc-bar" style="background:#7c2d12;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">KM</span><span class="dc-tot">9 รายการ</span></div>
+        <div class="dc-name">การจัดการความรู้</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-KM">9 ค้าง</span></div>
+      </div>
+    </a>
+
+    <a href="RDE_LD_IM69.html" class="dc">
+      <div class="dc-bar" style="background:#991b1b;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">IM</span><span class="dc-tot">9 รายการ</span></div>
+        <div class="dc-name">การจัดการนวัตกรรม</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-IM">9 ค้าง</span></div>
+      </div>
+    </a>
+
+    <a href="RDE_LD_IA69.html" class="dc">
+      <div class="dc-bar" style="background:#334155;"></div>
+      <div class="dc-in">
+        <div class="dc-hd"><span class="dc-code">IA</span><span class="dc-tot">5 รายการ</span></div>
+        <div class="dc-name">การตรวจสอบภายใน</div>
+        <div class="dc-st"><span class="chip chip-pend" id="hp-IA">5 ค้าง</span></div>
+      </div>
+    </a>
+
   </div>
 
-  <a href="RDE_LD_PlanHub69.html" class="plan-hub-bar">
-    <div class="phb-av">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+  <a href="RDE_LD_PlanHub69.html" class="planhub">
+    <div class="ph-ico">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
     </div>
     <div>
-      <div class="phb-title">แผนแม่บทกลาง — Plan Hub</div>
-      <div class="phb-sub">รวมลิงก์แผนแม่บทสำคัญทุกด้าน — พื้นฐานที่ทุกด้านต้องอ้างอิง</div>
+      <div class="ph-ey">Shared Resources</div>
+      <div class="ph-ttl">แผนแม่บทกลาง — Plan Hub</div>
+      <div class="ph-sub">รวมลิงก์แผนแม่บทสำคัญทุกด้าน พื้นฐานที่ทุกด้านต้องอ้างอิง</div>
     </div>
-    <div class="phb-cta">เปิด Plan Hub →</div>
+    <div class="ph-btn">เปิด Plan Hub →</div>
   </a>
 
-  <div class="info-bar">
-    <div class="info-item">★ <strong>จำเป็น</strong> — เอกสารพื้นฐาน L1–L3 ต้องครบก่อน</div>
-    <div class="info-item">◆ <strong>ยกระดับ</strong> — เอกสารเสริมเพื่อ L4–L5</div>
-    <div class="info-item">สถานะบันทึกในเบราว์เซอร์ของคุณ (localStorage)</div>
+  <div class="legend">
+    <span><strong>★ จำเป็น</strong> — เอกสารพื้นฐาน L1–L3 ต้องครบก่อน</span>
+    <span><strong>◆ ยกระดับ</strong> — เอกสารเสริมสู่ L4–L5</span>
+    <span>สถานะบันทึกในเบราว์เซอร์ของคุณ (localStorage)</span>
   </div>
-</div>
+</main>
 
 <script>
-const DIMS = [{dim:"CG", total:5}, {dim:"SP", total:12}, {dim:"RMIC", total:6}, {dim:"SM", total:4}, {dim:"CM", total:5}, {dim:"DT", total:5}, {dim:"HCM", total:5}, {dim:"KM", total:9}, {dim:"IM", total:9}, {dim:"IA", total:5}];
+const DIMS = [{dim:"CG",total:5},{dim:"SP",total:12},{dim:"RMIC",total:6},{dim:"SM",total:4},{dim:"CM",total:5},{dim:"DT",total:5},{dim:"HCM",total:5},{dim:"KM",total:9},{dim:"IM",total:9},{dim:"IA",total:5}];
 window.addEventListener('DOMContentLoaded', () => {
+  let allDone=0, allPend=0;
   DIMS.forEach(({dim, total}) => {
     const pre = 'ld_' + dim.toLowerCase() + '_';
-    let done=0, wait=0, pend=0;
+    let done=0, wait=0;
     for(let i=0; i<localStorage.length; i++){
       const k = localStorage.key(i);
       if(!k.startsWith(pre+'st_')) continue;
       const v = localStorage.getItem(k);
       if(v==='confirmed'||v==='received') done++;
       else if(v==='sent') wait++;
-      else pend++;
     }
+    allDone += done;
+    allPend += (total - done);
     const card = document.getElementById('hp-'+dim);
     if(!card) return;
-    const counted = done+wait+pend;
     const pending = total - done;
     if(done === total){
-      card.className='dc-chip chip-done'; card.textContent='ครบแล้ว ✓';
+      card.className='chip chip-done'; card.textContent='ครบแล้ว ✓';
     } else {
-      card.className='dc-chip chip-pend'; card.textContent=pending+' ค้าง';
-      if(wait>0){
-        card.insertAdjacentHTML('afterend',
-          `<span class="dc-chip chip-wait" style="margin-left:4px">${wait} รอยืนยัน</span>`);
-      }
+      card.className='chip chip-pend'; card.textContent=pending+' ค้าง';
+      if(wait>0) card.insertAdjacentHTML('afterend',`<span class="chip chip-wait" style="margin-left:4px">${wait} รอยืนยัน</span>`);
     }
   });
+  const elD=document.getElementById('total-done');
+  const elP=document.getElementById('total-pend');
+  if(elD) elD.textContent=allDone;
+  if(elP) elP.textContent=allPend;
 });
 </script>
 </body>
