@@ -5,47 +5,48 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CBE · LINK — Linkage Exchange ปี 2569</title>
 <style>
-@font-face{font-family:'Anakotmai';font-weight:300;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-light.woff2') format('woff2');}
-@font-face{font-family:'Anakotmai';font-weight:500;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-medium.woff2') format('woff2');}
-@font-face{font-family:'Anakotmai';font-weight:700;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-bold.woff2') format('woff2');}
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+@font-face{font-family:'Anakotmai';font-weight:300;font-style:normal;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-light.woff2') format('woff2');}
+@font-face{font-family:'Anakotmai';font-weight:500;font-style:normal;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-medium.woff2') format('woff2');}
+@font-face{font-family:'Anakotmai';font-weight:700;font-style:normal;src:url('https://pdee-hub.github.io/Enablers-Link-Document-69/Anakotmai/webfont/anakotmai-bold.woff2') format('woff2');}
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#f8f7f4; --bg2:#f1efe9; --card:#fff;
-  --border:#e6e3dc; --border2:#ccc9bf;
-  --text:#1c1f24; --text2:#5a5f68; --text3:#9a9da3;
-  --navy:#1e3a5c; --gold:#b8862f; --gold-lt:#f6eed9;
-  --green:#059669; --green-bg:#ecfdf5; --green-bd:#6ee7b7;
-  --red:#b91c1c; --red-bg:#fef2f2; --red-bd:#fecaca;
-  --amber:#c2610f; --amber-bg:#fff7ed; --amber-bd:#fed7aa;
+  --bg:#faf6f0; --bg2:#fdf1de; --card:#ffffff;
+  --border:#e8dcc8; --border-s:#f3e9d8; --border2:#d8c7a8;
+  --text:#181410; --text2:#5c5347; --text3:#9c9184;
+  --gold:#f0a92e; --gold-lt:#fdf1de;
+  --chili:#b8291c; --chili-d:#8f1f14;
+  --green:#1f7a4a; --green-bg:rgba(31,122,74,.1); --green-bd:rgba(31,122,74,.32);
+  --red:#b8291c; --red-bg:rgba(184,41,28,.1); --red-bd:rgba(184,41,28,.32);
+  --amber:#a8431f; --amber-bg:rgba(232,98,62,.12); --amber-bd:rgba(232,98,62,.32);
   --r:6px;
-  --sh:0 1px 2px rgba(28,31,36,.06),0 0 0 1px rgba(28,31,36,.04);
-  --sh-md:0 4px 14px rgba(28,31,36,.1),0 0 0 1px rgba(28,31,36,.05);
-  --sans:'Anakotmai',sans-serif; --mono:'IBM Plex Mono',monospace;
+  --sh:0 1px 2px rgba(24,20,16,.08),0 0 0 1px rgba(24,20,16,.05);
+  --sh-md:0 4px 14px rgba(24,20,16,.12),0 0 0 1px rgba(24,20,16,.06);
+  --sans:'Anakotmai',sans-serif; --mono:'Anakotmai',sans-serif;
 }
-body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.55;}
+body{font-family:var(--sans);background-color:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.55;background-image:radial-gradient(rgba(24,20,16,.14) 1px, transparent 1px);background-size:16px 16px;}
 
 /* ── NAV ── */
-.nav{background:var(--navy);height:52px;display:flex;align-items:center;padding:0 40px;gap:14px;position:sticky;top:0;z-index:60;}
+.nav{background:var(--text);height:52px;display:flex;align-items:center;padding:0 40px;gap:14px;position:sticky;top:0;z-index:60;}
 .nav-anchor{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;}
 .nav-icon{width:26px;height:26px;}
 .nav-name{font-size:13px;font-weight:700;color:#fff;}
 .nav-sub{font-size:9px;color:rgba(255,255,255,.38);margin-top:1px;}
 .nav-sep{width:1px;height:22px;background:rgba(255,255,255,.14);}
 .nav-lbl{font-size:13px;font-weight:600;color:rgba(255,255,255,.82);}
-.nav-tag{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--gold);background:rgba(184,134,47,.14);padding:3px 10px;border-radius:20px;letter-spacing:.5px;white-space:nowrap;}
+.nav-tag{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--gold);background:rgba(240,169,46,.16);padding:3px 10px;border-radius:20px;letter-spacing:.5px;white-space:nowrap;}
+.nav-bar{height:3px;background:linear-gradient(90deg,var(--chili) 0%,var(--gold) 45%,transparent 75%);}
 
 /* ── BANNER ── */
 .banner{background:var(--bg);border-bottom:1px solid var(--border);padding:40px 40px 36px;}
 .banner-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 216px;gap:64px;align-items:center;}
-.kicker{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.kicker::before{content:'';width:20px;height:2px;background:var(--gold);flex-shrink:0;}
-.banner-h{font-size:36px;font-weight:700;color:var(--navy);line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px;}
-.banner-h .g{color:var(--gold);}
-.banner-sub{font-size:14px;color:var(--text2);line-height:1.65;max-width:500px;}
+.kicker{font-family:var(--mono);font-size:10px;color:var(--chili-d);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.kicker::before{content:'';width:20px;height:2px;background:var(--chili);flex-shrink:0;}
+.banner-h{font-size:32px;font-weight:800;color:var(--text);line-height:1.15;letter-spacing:-0.02em;margin-bottom:10px;}
+.banner-h .g{color:var(--chili);}
+.banner-sub{font-size:13px;color:var(--text2);line-height:1.65;max-width:500px;}
 .statbox{background:var(--card);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:20px 20px 16px;display:flex;flex-direction:column;gap:12px;}
 .st{display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
-.st-n{font-size:24px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1;}
+.st-n{font-size:24px;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;line-height:1;}
 .st-n.sm{font-size:20px;}
 .st-l{font-size:11px;color:var(--text3);}
 .st-div{height:1px;background:var(--border);}
@@ -63,25 +64,25 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
 .dc-bar{width:3px;flex-shrink:0;}
 .dc-in{flex:1;padding:16px 14px 14px;}
 .dc-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;}
-.dc-code{font-family:var(--mono);font-size:9px;font-weight:500;color:var(--text3);letter-spacing:.8px;text-transform:uppercase;}
+.dc-code{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--text3);letter-spacing:.8px;text-transform:uppercase;}
 .dc-tot{font-family:var(--mono);font-size:9px;color:var(--text3);}
 .dc-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:10px;}
 .dc-st{display:flex;gap:4px;flex-wrap:wrap;}
-.chip{font-family:var(--mono);font-size:9px;font-weight:500;padding:2px 7px;border-radius:20px;border:1px solid transparent;}
-.chip-pend{background:var(--red-bg);color:var(--red);border-color:var(--red-bd);}
+.chip{font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;border:1px solid transparent;}
+.chip-pend{background:var(--red-bg);color:var(--chili-d);border-color:var(--red-bd);}
 .chip-done{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
 .chip-wait{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bd);}
 
 /* ── PLAN HUB ── */
-.planhub{display:flex;align-items:center;gap:20px;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r);padding:20px 24px;margin-bottom:24px;box-shadow:var(--sh);text-decoration:none;color:inherit;transition:box-shadow .16s;}
+.planhub{display:flex;align-items:center;gap:20px;background:var(--card);border:1px solid var(--border);border-left:3px solid var(--chili);border-radius:var(--r);padding:20px 24px;margin-bottom:24px;box-shadow:var(--sh);text-decoration:none;color:inherit;transition:box-shadow .16s;}
 .planhub:hover{box-shadow:var(--sh-md);}
 .ph-ico{width:40px;height:40px;border-radius:8px;background:var(--gold-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ph-ico svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.8;}
-.ph-ey{font-family:var(--mono);font-size:9px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;}
-.ph-ttl{font-size:15px;font-weight:700;color:var(--navy);}
+.ph-ico svg{width:18px;height:18px;stroke:var(--chili-d);fill:none;stroke-width:1.8;}
+.ph-ey{font-family:var(--mono);font-size:9px;color:var(--chili-d);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;}
+.ph-ttl{font-size:15px;font-weight:700;color:var(--text);}
 .ph-sub{font-size:12px;color:var(--text2);margin-top:2px;}
-.ph-btn{margin-left:auto;flex-shrink:0;font-size:12px;font-weight:700;color:var(--navy);border:1.5px solid var(--border2);padding:7px 16px;border-radius:var(--r);transition:all .15s;white-space:nowrap;}
-.planhub:hover .ph-btn{background:var(--navy);color:#fff;border-color:var(--navy);}
+.ph-btn{margin-left:auto;flex-shrink:0;font-size:12px;font-weight:700;color:var(--text);border:1.5px solid var(--border2);padding:7px 16px;border-radius:var(--r);transition:all .15s;white-space:nowrap;}
+.planhub:hover .ph-btn{background:var(--chili);color:#fff;border-color:var(--chili);}
 
 /* ── LEGEND ── */
 .legend{display:flex;gap:24px;padding:14px 0 0;border-top:1px solid var(--border);font-size:12px;color:var(--text3);flex-wrap:wrap;align-items:center;}
@@ -107,12 +108,13 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
   <span class="nav-lbl">CBE · LINK — Linkage Exchange</span>
   <span class="nav-tag">FY 2569</span>
 </nav>
+<div class="nav-bar"></div>
 
 <div class="banner">
   <div class="banner-in">
     <div>
       <div class="kicker">SE-AM Enablers · กองประเมินผลองค์กร</div>
-      <h1 class="banner-h">Linkage<br><span class="g">Exchange</span></h1>
+      <h1 class="banner-h">Linkage <span class="g">Exchange</span></h1>
       <p class="banner-sub">ระบบแลกเปลี่ยนเอกสารเชื่อมโยงระหว่างด้าน — เลือกด้านของคุณเพื่อจัดการเอกสาร</p>
     </div>
     <div class="statbox">
@@ -131,7 +133,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
   <div class="grid">
 
     <a href="RDE_LD_CG69.html" class="dc">
-      <div class="dc-bar" style="background:#1e3a8a;"></div>
+      <div class="dc-bar" style="background:#1e3a5c;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">CG</span><span class="dc-tot">5 รายการ</span></div>
         <div class="dc-name">การกำกับดูแลที่ดี</div>
@@ -140,7 +142,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </a>
 
     <a href="RDE_LD_SP69.html" class="dc">
-      <div class="dc-bar" style="background:#3730a3;"></div>
+      <div class="dc-bar" style="background:#0284c7;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">SP</span><span class="dc-tot">12 รายการ</span></div>
         <div class="dc-name">การวางแผนยุทธศาสตร์</div>
@@ -149,7 +151,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </a>
 
     <a href="RDE_LD_RMIC69.html" class="dc">
-      <div class="dc-bar" style="background:#9a3412;"></div>
+      <div class="dc-bar" style="background:#b45309;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">RM&amp;IC</span><span class="dc-tot">6 รายการ</span></div>
         <div class="dc-name">บริหารความเสี่ยงและควบคุมภายใน</div>
@@ -158,7 +160,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </a>
 
     <a href="RDE_LD_SM69.html" class="dc">
-      <div class="dc-bar" style="background:#166534;"></div>
+      <div class="dc-bar" style="background:#1a7a4a;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">SM</span><span class="dc-tot">4 รายการ</span></div>
         <div class="dc-name">การมุ่งเน้นผู้มีส่วนได้เสีย</div>
@@ -167,7 +169,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </a>
 
     <a href="RDE_LD_CM69.html" class="dc">
-      <div class="dc-bar" style="background:#164e63;"></div>
+      <div class="dc-bar" style="background:#0891b2;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">CM</span><span class="dc-tot">5 รายการ</span></div>
         <div class="dc-name">การมุ่งเน้นลูกค้า</div>
@@ -176,7 +178,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </a>
 
     <a href="RDE_LD_DT69.html" class="dc">
-      <div class="dc-bar" style="background:#4338ca;"></div>
+      <div class="dc-bar" style="background:#4f46e5;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">DT</span><span class="dc-tot">5 รายการ</span></div>
         <div class="dc-name">การเปลี่ยนผ่านดิจิทัล</div>
@@ -185,7 +187,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </a>
 
     <a href="RDE_LD_HCM69.html" class="dc">
-      <div class="dc-bar" style="background:#065f46;"></div>
+      <div class="dc-bar" style="background:#1f9d6f;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">HCM</span><span class="dc-tot">5 รายการ</span></div>
         <div class="dc-name">การบริหารทุนมนุษย์</div>
@@ -194,7 +196,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </a>
 
     <a href="RDE_LD_KM69.html" class="dc">
-      <div class="dc-bar" style="background:#7c2d12;"></div>
+      <div class="dc-bar" style="background:#c2610f;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">KM</span><span class="dc-tot">9 รายการ</span></div>
         <div class="dc-name">การจัดการความรู้</div>
@@ -203,7 +205,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </a>
 
     <a href="RDE_LD_IM69.html" class="dc">
-      <div class="dc-bar" style="background:#991b1b;"></div>
+      <div class="dc-bar" style="background:#e2554f;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">IM</span><span class="dc-tot">9 รายการ</span></div>
         <div class="dc-name">การจัดการนวัตกรรม</div>
@@ -212,7 +214,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
     </a>
 
     <a href="RDE_LD_IA69.html" class="dc">
-      <div class="dc-bar" style="background:#334155;"></div>
+      <div class="dc-bar" style="background:#475569;"></div>
       <div class="dc-in">
         <div class="dc-hd"><span class="dc-code">IA</span><span class="dc-tot">5 รายการ</span></div>
         <div class="dc-name">การตรวจสอบภายใน</div>
